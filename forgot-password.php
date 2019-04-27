@@ -40,7 +40,7 @@
 	        <div class="row justify-content-center">
 	            <div class="col-md-8">
 	                <div class="card">
-	                    <div class="card-header">Login</div>
+	                    <div class="card-header">Forgot Password</div>
 	                    <div class="card-body">
 	                        <form action="" method="post">
 	                            <div class="form-group row">
@@ -57,23 +57,10 @@
 	                                </div>
 	                            </div>
 
-	                            <div class="form-group row">
-	                                <div class="col-md-6 offset-md-4">
-	                                    <div class="checkbox">
-	                                        <label>
-	                                            <input type="checkbox" name="remember"> Remember Me
-	                                        </label>
-	                                    </div>
-	                                </div>
-	                            </div>
-
 	                            <div class="col-md-6 offset-md-4">
 	                                <button type="submit" class="btn btn-primary">
-	                                    Register
+	                                    Send E-mail
 	                                </button>
-	                                <a href="forgot-password.php" class="btn btn-link">
-	                                    Forgot Your Password?
-	                                </a>
 	                            </div>
 	                    	</form>
 	                    </div>

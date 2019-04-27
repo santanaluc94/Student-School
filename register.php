@@ -27,7 +27,7 @@
 	                    <a class="nav-link" href="index.php">Login</a>
 	                </li>
 	                <li class="nav-item">
-	                    <a class="nav-link" href="form.php">Register</a>
+	                    <a class="nav-link" href="register.php">Register</a>
 	                </li>
 
 	            </ul>
@@ -51,9 +51,16 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                                <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="email" class="form-control" name="email">
+                                    <input type="email_address" id="email_address" class="form-control" name="email_address">
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="cpf" class="col-md-4 col-form-label text-md-right">C.P.F.</label>
+                                <div class="col-md-6">
+                                    <input type="number" id="cpf" class="form-control" name="cpf">
                                 </div>
                             </div>
 
@@ -82,6 +89,20 @@
                                 </div>
                             </div>
 
+                            <div class="form-group row">
+                                <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="password" class="form-control" name="password">
+                                </div>
+                            </div>
+
+							<div class="form-group row">
+                                <label for="confirm-password" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
+                                <div class="col-md-6">
+                                    <input type="text" id="confirm-password" class="form-control" name="confirm-password">
+                                </div>
+                            </div>
+
                             <div class="col-md-6 offset-md-4">
                                 <button type="submit" class="btn btn-primary">
                                     Register
@@ -97,10 +118,10 @@
 
 <?php
 
-// $name = $_POST["name"];
-// $date = $_POST["date"];
-// $email = $_POST["email"];
-// $phone = $_POST["phone"];
+//$name = $_POST["name"];
+//$date = $_POST["date"];
+//$email = $_POST["email"];
+//$phone = $_POST["phone"];
 
 ?>
 
