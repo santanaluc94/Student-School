@@ -11,12 +11,12 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
     <link href="_css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
-	<title>Login</title>
+	<title>Student School</title>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
 	    <div class="container">
-	        <a class="navbar-brand" href="?page=index">Jober</a>
+	        <a class="navbar-brand" href="?page=index">Student School</a>
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 	            <span class="navbar-toggler-icon"></span>
 	        </button>

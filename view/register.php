@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">Register</div>
                     <div class="card-body">
-                        <form name="my-form" onsubmit="return validform()" action="success.php" method="">
+                        <form name="my-form" onsubmit="return validform()" action="database.php" method="post">
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                                 <div class="col-md-6">
@@ -14,9 +14,9 @@
                             </div>
 
                             <div class="form-group row">
-                                <label for="email_address" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
-                                    <input type="email_address" id="email_address" class="form-control" name="email_address">
+                                    <input type="email" id="email" class="form-control" name="email">
                                 </div>
                             </div>
 
@@ -67,7 +67,7 @@
                             </div>
 
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn-primary" href='?page=submit'>
                                     Register
                                 </button>
                             </div>
@@ -78,10 +78,3 @@
         </div>
     </div>
 </main>
-
-<?php
-
-//$name = $_POST["name"];
-//$date = $_POST["date"];
-//$email = $_POST["email"];
-//$phone = $_POST["phone"];
