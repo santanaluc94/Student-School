@@ -12,8 +12,8 @@ if ($page == 'login') {
 	include 'view/login.php';
 } else if ($page == 'register') {
 	include 'view/register.php';
-	if ($page == 'database') {
-		include 'database.php';;
+	if ($page == 'register_db') {
+		include 'view/register_db.php';;
 	}
 } else if ($page == 'forgot-password') {
 	include 'view/forgot-password.php';
