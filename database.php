@@ -24,23 +24,7 @@ if ($gender == 1){
 } else {
 	$gender = null;
 }
-
-$query = "INSERT register(
-	name,
-	email,
-	cpf,
-	phone,
-	birthday,
-	gender,
-	password
-) VALUES (
-	'.$name.', 
-	'.$email.',
-	.$cpf.,
-	.$phone.,
-	'.$birthday.',
-	'.$gender.',
-	'.$password.'
-);";
-
+$query = "INSERT register(name, email, cpf, phone, birthday, gender, password) VALUES ('$name', '$email', $cpf, $phone, '$birthday', '$gender','$password');";
 $registry = mysqli_query($conection, $query);
+
+header("Location: index.php");
