@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">Register</div>
                     <div class="card-body">
-                        <form name="my-form" onsubmit="return validform()" action="view/register_db.php" method="post">
+                        <form name="my-form" action="" method="post">
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                                 <div class="col-md-6">
