@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">Register</div>
                     <div class="card-body">
-                        <form name="my-form" action="" method="post">
+                        <form name="my-form" action="Controller/guest/register_db.php" method="post">
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                                 <div class="col-md-6">
@@ -62,7 +62,7 @@
 							<div class="form-group row">
                                 <label for="confirm-password" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="confirm-password" class="form-control" name="confirm-password">
+                                    <input type="text" id="confirm-password" class="form-control" name="cpassword">
                                 </div>
                             </div>
 

@@ -1,7 +1,6 @@
 <?php
 
-include '../database.php';
-
+require_once('../../Model/database.php');
 
 $name = $_POST['name'];
 $email = $_POST['email'];
@@ -10,17 +9,29 @@ $phone = $_POST['phone'];
 $birthday = $_POST['birthday'];
 $gender = $_POST['gender'];
 $password = $_POST['password'];
+$cpassword = $_POST['cpassword'];
 
-if ($gender == 1){
+if ($gender == 1) {
 	$gender = 'Male'; 
-} else if ($gender == 2){
+} 
+
+elseif ($gender == 2) {
 	$gender = 'Female';
-} else if ($gender == 3){
+}
+
+elseif ($gender == 3) {
 	$gender = 'Other';
-} else {
+}
+
+else {
 	$gender = null;
 }
-$query = "INSERT register(name, email, cpf, phone, birthday, gender, password) VALUES ('$name', '$email', $cpf, $phone, '$birthday', '$gender','$password');";
-$registry = mysqli_query($conection, $query);
 
-header("Location: ../index.php");
+$connectionDb = new Database();
+$connection = $connectionDb->connection();
+
+if ($password == $cpassword){
+	$query = "INSERT INTO register(name, email, cpf, phone, birthday, gender, password) VALUES ('$name', '$email', $cpf, $phone, '$birthday', '$gender','$password');";
+	mysqli_query($connection, $query);
+	header("Location: ../../index.php");
+}
