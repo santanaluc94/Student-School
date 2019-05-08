@@ -23,21 +23,21 @@
                             <div class="form-group row">
                                 <label for="cpf" class="col-md-4 col-form-label text-md-right">C.P.F.</label>
                                 <div class="col-md-6">
-                                    <input type="number" id="cpf" class="form-control" name="cpf">
+                                    <input type="text" id="cpf" class="form-control" name="cpf" placeholder="000.000.000-00">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="phone" class="col-md-4 col-form-label text-md-right">Phone Number</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="phone" class="form-control" name="phone">
+                                    <input type="text" id="phone" class="form-control" name="phone" placeholder="(00) 0000-0000">
                                 </div>
                             </div>
 
                             <div class="form-group row">
                                 <label for="birthday" class="col-md-4 col-form-label text-md-right">Birthday</label>
                                 <div class="col-md-6">
-                                    <input type="date" id="birthday" class="form-control" name="birthday">
+                                    <input type="text" id="birthday" class="form-control" name="birthday" placeholder="00/00/0000">
                                 </div>
                             </div>
 
@@ -55,14 +55,14 @@
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">Password</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="password" class="form-control" name="password">
+                                    <input type="password" id="password" class="form-control password" name="password">
                                 </div>
                             </div>
 
 							<div class="form-group row">
                                 <label for="confirm-password" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
                                 <div class="col-md-6">
-                                    <input type="text" id="confirm-password" class="form-control" name="cpassword">
+                                    <input type="password" id="confirm-password" class="form-control password" name="cpassword">
                                 </div>
                             </div>
 

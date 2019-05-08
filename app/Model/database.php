@@ -7,7 +7,7 @@ class Database {
 	private $passw;
 	private $database;
 
-	public function __construct(){
+	public function __construct() {
   		$server = $this->setServer("localhost");
   		$user = $this->setUser("root");
   		$passw = $this->setPassw("");
@@ -15,7 +15,7 @@ class Database {
 
 	}
 
-	public function getServer(){
+	public function getServer() {
 		return $this->server;
 	}
 
@@ -23,7 +23,7 @@ class Database {
     	$this->server = $server;
   	}
 
-  	public function getUser(){
+  	public function getUser() {
 		return $this->user;
 	}
 
@@ -31,14 +31,14 @@ class Database {
     	$this->user = $user;
   	}
 
-  	public function getPassw(){
+  	public function getPassw() {
 		return $this->passw;
 	}
 
 	public function setPassw($passw) {
     	$this->passw = $passw;
   	}
-  	public function getDatabase(){
+  	public function getDatabase() {
 		return $this->database;
 	}
 
@@ -46,16 +46,16 @@ class Database {
     	$this->database = $database;
   	}
 
-  	public function connection(){
+  	public function connection() {
+
   		$server = $this->getServer();
 		$user = $this->getUser();
 		$passw = $this->getPassw(); 
 		$database = $this->getDatabase();
 
-
 		$connect = mysqli_connect($server, $user, $passw, $database);
 		
-		if (mysqli_connect_errno()){
+		if (mysqli_connect_errno()) {
 			echo "Error to connect:" . mysqli_connect_error();
 		}
 		

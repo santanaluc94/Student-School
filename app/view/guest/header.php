@@ -5,11 +5,25 @@
     <meta content="IE=edge" http-equiv="X-UA-Compatible"/ >
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/ >
 	
-    <link href="_css/login.css" rel="stylesheet" type="text/css" />
-
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
-    <link href="_css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../public/_css/login.css" rel="stylesheet" type="text/css" />
+    <link href="../public/_css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+	<!-- Boostrap JS -->
+	<script type="text/javascript" src="../public/_js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../public/_js/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="../public/_js/bootstrap.min.js"></script>  
+
+    <!-- JS -->
+	<script type="text/javascript">
+	    $(document).ready(
+	    	function() {
+	        	$('#cpf').mask('000.000.000-00');
+	        	$('#phone').mask('(00) 0000-0000');
+	        	$('#birthday').mask('00/00/0000');
+	        }
+	    )
+	</script>  
 
 	<title>Student School</title>
 </head>
