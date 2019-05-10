@@ -6,13 +6,13 @@
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/ >
 	
     <!-- Bootstrap CSS -->
-    <link href="../public/_css/login.css" rel="stylesheet" type="text/css" />
-    <link href="../public/_css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="../public/css/login.css" rel="stylesheet" type="text/css" />
+    <link href="../public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
 
 	<!-- Boostrap JS -->
-	<script type="text/javascript" src="../public/_js/jquery-3.2.1.min.js"></script>
-	<script type="text/javascript" src="../public/_js/jquery.mask.min.js"></script>
-    <script type="text/javascript" src="../public/_js/bootstrap.min.js"></script>  
+	<script type="text/javascript" src="../public/js/jquery-3.2.1.min.js"></script>
+	<script type="text/javascript" src="../public/js/jquery.mask.min.js"></script>
+    <script type="text/javascript" src="../public/js/bootstrap.min.js"></script>  
 
     <!-- JS -->
 	<script type="text/javascript">
