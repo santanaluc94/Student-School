@@ -1,6 +1,6 @@
 <?php
 
-require_once('../../Model/database.php');
+require_once('../../Model/Database.php');
 
 $name = $_POST['name'];
 $email = $_POST['email'];
