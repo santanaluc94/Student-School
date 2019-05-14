@@ -8,6 +8,7 @@
     <!-- Bootstrap CSS -->
     <link href="../public/css/login.css" rel="stylesheet" type="text/css" />
     <link href="../public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/footer.css" rel="stylesheet" type="text/css" />
 
 	<!-- Boostrap JS -->
 	<script type="text/javascript" src="../public/js/jquery-3.2.1.min.js"></script>
