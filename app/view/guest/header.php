@@ -1,35 +1,38 @@
 <!DOCTYPE html>
 <html>
+
 <head>
-	<meta charset="utf-8"/>
-    <meta content="IE=edge" http-equiv="X-UA-Compatible"/ >
-    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/ >
-	
-    <!-- Bootstrap CSS -->
-    <link href="../public/css/login.css" rel="stylesheet" type="text/css" />
-    <link href="../public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<meta charset="utf-8" />
+	<meta content="IE=edge" http-equiv="X-UA-Compatible" />
+	<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport" />
+
+	<!-- Bootstrap CSS -->
+	<link href="../public/css/login.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+	<link href="../public/css/header.css" rel="stylesheet" type="text/css" />
 	<link href="../public/css/footer.css" rel="stylesheet" type="text/css" />
 
 	<!-- Boostrap JS -->
 	<script type="text/javascript" src="../public/js/jquery-3.2.1.min.js"></script>
 	<script type="text/javascript" src="../public/js/jquery.mask.min.js"></script>
-    <script type="text/javascript" src="../public/js/bootstrap.min.js"></script>  
+	<script type="text/javascript" src="../public/js/bootstrap.min.js"></script>
 
-    <!-- JS -->
+	<!-- JS -->
 	<script type="text/javascript">
-	    $(document).ready(
-	    	function() {
-	        	$('#cpf').mask('000.000.000-00');
-	        	$('#phone').mask('(00) 0000-0000');
-	        	$('#birthday').mask('00/00/0000');
-	        }
-	    )
-	</script>  
+		$(document).ready(
+			function () {
+				$('#cpf').mask('000.000.000-00');
+				$('#phone').mask('(00) 0000-0000');
+				$('#birthday').mask('00/00/0000');
+			}
+		)
+	</script>
 
 	<title>Student School</title>
 </head>
+
 <body>
-    <nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
+	<!--<nav class="navbar navbar-expand-lg navbar-light navbar-laravel">
 	    <div class="container">
 	        <a class="navbar-brand" href="?page=index">Student School</a>
 	        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -47,4 +50,33 @@
 	            </ul>
 	        </div>
 	    </div>
+	</nav>-->
+
+
+<!------ Include the above in your HEAD tag ---------->
+
+	<nav class="navbar navbar-expand navbar-dark bg-dark">
+		<a href="index.html" class="navbar-brand">Home</a>
+		<button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarSupportedContent"
+			aria-controls="navbarSupportedContent" aria-expanded="false">
+			<span class="navbar-toggler-icon"></span>
+		</button>
+
+		<div class="collapse navbar-collapse" id="navbarSupportedContent">
+			<ul class="navbar-nav mr-auto">
+				<a href="#" class="nav-item active nav-link">Quem somos</a>
+				<a href="#" class="nav-item active nav-link">Nossa história</a>
+				<a href="#" class="nav item active nav-link">Localidades</a>
+
+				<li class="nav-item dropdown">
+					<a href="#" class="nav-link dropdown-toggle active" data-toggle="dropdown" role="button"  aria-haspopup="true" aria-expanded="false">
+						Nossos serviços
+					</a>
+					<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+						<li><a href="#" class="dropdown-item">Divisão Militar</a></li>
+						<li><a href="#" class="dropdown-item">Divisão Corporativa</a></li>
+						<li><a href="#" class="dropdown-item">Aplicações para a área de saúde</a><li>
+					</ul>
+				</li>
+			</ul>
 	</nav>
