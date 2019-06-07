@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'https://localhost/student-school/';
+$config['base_url'] = 'http://localhost/student-school/';
 
 /*
 |--------------------------------------------------------------------------
@@ -35,7 +35,7 @@ $config['base_url'] = 'https://localhost/student-school/';
 | variable so that it is blank.
 |
 */
-$config['index_page'] = 'index.php';
+$config['index_page'] = '';
 
 /*
 |--------------------------------------------------------------------------
@@ -324,7 +324,7 @@ $config['cache_query_string'] = FALSE;
 | https://codeigniter.com/user_guide/libraries/encryption.html
 |
 */
-$config['encryption_key'] = '9ak03btbqp8M6AnjnkUILTXP4XydPMsO';
+$config['encryption_key'] = 'nhCUOgzcM1q8eCkTcpxGp3XGNKRMAtzL';
 
 /*
 |--------------------------------------------------------------------------
