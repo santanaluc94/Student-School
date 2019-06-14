@@ -11,8 +11,6 @@ class Users extends CI_Model
 
     public function saveUser($data)
     {
-        var_dump($data);
-
         $userExist = $this->db->from('register')->where('email', $data['email'])->or_where('cpf', $data['cpf']);
         
         if (empty($userExist->get()->result())) {
