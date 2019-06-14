@@ -32,9 +32,12 @@ class Register extends CI_Controller {
 			$data['gender'] = "Male";
 		} elseif ($data['gender'] == 2) {
 			$data['gender'] = "Female";
-		} else {
+		} elseif ($data['gender'] == 3) {
 			$data['gender'] = "Other";
+		} else {
+			return false;
 		}
+		
 		if ($data['password'] === $cpassword)
 		{
 			$this->users->saveUser($data);

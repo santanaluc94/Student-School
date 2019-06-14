@@ -1,120 +1,28 @@
  <section id="quote" class="testimonial-section py-5">
 	    <div class="container py-lg-5">
 		    <h3 class="mb-1 mb-md-5 text-center">Loved by thousands of app developers like you</h3>
-		    
+
+
 		    <div id="flipster-carousel" class="flipster-carousel pt-md-3">
 			    <div class="flip-items pb-5">
-				    <div class="flip-item text-center text-md-left">
-					    <div class="item-inner shadow-lg rounded">
-						    <h5 class="mb-2">Amazing App!</h5>
-						    <div class="ratings text-primary mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-						    <div class="mb-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
-						    </div>
-						    <div class="source media flex-column flex-md-row">
-							    <img class="source-profile rounded-circle mr-md-3 mx-auto mx-md-0" src="<?= base_url('public/images/users/user-1.jpg'); ?>" alt="" />
-							    <div class="source-info media-body pt-3">
-								    <div>Tony Carter</div>
-								    <div>London, UK</div>
-							    </div>
-						    </div>
-					    </div><!--//item-inner-->
-				    </div><!--//flip-item-->
-				    
+				<?php foreach ($courses as $course): ?>
 				    <div class="flip-item">
 					    <div class="item-inner shadow-lg rounded">
-						    <h5 class="mb-2">Marvellous!</h5>
-						    <div class="ratings text-primary mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half"></i></div>
-						    <div class="mb-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
+						    <h5 class="mb-2"><?= $course['course'] ?></h5>
+						    <div class="mb-3"><?= $course['description'] ?> 
 						    </div>
 						    <div class="source media ">
-							    <img class="source-profile rounded-circle mr-3" src="<?= base_url('public/images/users/user-2.jpg'); ?>" alt="" />
+							    <img class="source-profile rounded-circle mr-3" src="<?= base_url('public/images/courses/'.$course['course'].'jpg') ?>" alt="" />
 							    <div class="source-info media-body pt-3">
-								    <div>Helen Owens</div>
-								    <div>New York, US</div>
+								    <div><?= $course['workload'] ?> hours</div>
+								    <div>R$<?= $course['price'] ?>,00</div>
 							    </div>
 						    </div>
 					    </div><!--//item-inner-->
 				    </div><!--//flip-item-->
+				<?php endforeach; ?>
 				    
-				    <div class="flip-item">
-					    <div class="item-inner shadow-lg rounded">
-						    <h5 class="mb-2">Actually Impressive!</h5>
-						    <div class="ratings text-primary mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-						    <div class="mb-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
-						    </div>
-						    <div class="source media">
-							    <img class="source-profile rounded-circle mr-3" src="<?= base_url('public/images/users/user-3.jpg'); ?>" alt="" />
-							    <div class="source-info media-body pt-3">
-								    <div>Scott Rivera</div>
-								    <div>Florida, US</div>
-							    </div>
-						    </div>
-					    </div><!--//item-inner-->
-				    </div><!--//flip-item-->
 				    
-				    <div class="flip-item">
-					    <div class="item-inner shadow-lg rounded">
-						    <h5 class="mb-2">Total Game Changer!</h5>
-						    <div class="ratings text-primary mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-						    <div class="mb-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
-						    </div>
-						    <div class="source media">
-							    <img class="source-profile rounded-circle mr-3" src="<?= base_url('public/images/users/user-4.jpg'); ?>" alt="" />
-							    <div class="source-info media-body pt-3">
-								    <div>Charles Brewer</div>
-								    <div>San Francisco, US</div>
-							    </div>
-						    </div>
-					    </div><!--//item-inner-->
-				    </div><!--//flip-item-->
-				    
-				    <div class="flip-item">
-					    <div class="item-inner shadow-lg rounded">
-						    <h5 class="mb-2">Just Perfect!</h5>
-						    <div class="ratings text-primary mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-						    <div class="mb-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
-						    </div>
-						    <div class="source media">
-							    <img class="source-profile rounded-circle mr-3" src="<?= base_url('public/images/users/user-5.jpg'); ?>" alt="" />
-							    <div class="source-info media-body pt-3">
-								    <div>Deborah Reed</div>
-								    <div>Paris, France</div>
-							    </div>
-						    </div>
-					    </div><!--//item-inner-->
-				    </div><!--//flip-item-->
-				    
-				    <div class="flip-item">
-					    <div class="item-inner shadow-lg rounded">
-						    <h5 class="mb-2">Great App!</h5>
-						    <div class="ratings text-primary mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-						    <div class="mb-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
-						    </div>
-						    <div class="source media">
-							    <img class="source-profile rounded-circle mr-3" src="<?= base_url('public/images/users/user-6.jpg'); ?>" alt="" />
-							    <div class="source-info media-body pt-3">
-								    <div>Tony Cheng</div>
-								    <div>San Francisco, US</div>
-							    </div>
-						    </div>
-					    </div><!--//item-inner-->
-				    </div><!--//flip-item-->
-				    
-				    <div class="flip-item">
-					    <div class="item-inner shadow-lg rounded">
-						    <h5 class="mb-2">Exceptional!</h5>
-						    <div class="ratings text-primary mb-3"><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i></div>
-						    <div class="mb-3">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis.Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. 
-						    </div>
-						    <div class="source media">
-							    <img class="source-profile rounded-circle mr-3" src="<?= base_url('public/images/users/user-7.jpg'); ?>" alt="" />
-							    <div class="source-info media-body pt-3">
-								    <div>Kimberly Wells</div>
-								    <div>London, UK</div>
-							    </div>
-						    </div>
-					    </div><!--//item-inner-->
-				    </div><!--//flip-item-->
 
 			    </div><!--//items-wrapper-->    
 			    <div class="pt-5 text-center">
