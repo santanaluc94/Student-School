@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">Login</div>
                     <div class="card-body">
-                        <form action="Controller/guest/login_db.php" method="post">
+                        <form action="<?= base_url('login/login') ?>" method="post">
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">

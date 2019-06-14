@@ -1,11 +1,11 @@
-<main class="content>
+<main class="content">
     <div class="cotainer">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header">Register</div>
                     <div class="card-body">
-                        <form action="Controller/guest/register_db.php" method="post">
+                        <form action="<?= base_url('register/register') ?>" method="post">
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                                 <div class="col-md-6">
