@@ -6,6 +6,7 @@
     <!-- Page Specific JS -->
     <script type="text/javascript" src="<?= base_url('public/plugins/jquery-flipster/dist/jquery.flipster.min.js'); ?>"></script> 
     <script type="text/javascript" src="<?= base_url('public/js/flipster-custom.js'); ?>"></script> 
+    <script type="text/javascript" src="<?= base_url('public/js/util.js'); ?>"></script> 
 
 
 </body>
