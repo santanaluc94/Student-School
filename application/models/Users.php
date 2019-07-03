@@ -23,12 +23,11 @@ class Users extends CI_Model
 
     public function loginUser($data)
     {
-        $this->db->from('register')->where('email', $data['email'])->where('password', $data['password']);
-    
-        $userExist = $this->db->get();
-
+        $userExist = $this->db->from('register')->where('email', $data['email'])->where('password', $data['password'])->get()->result_array();
         if (!empty($userExist)) {
-            echo "Welcome " . $userExist->result_array()[0]['name'] . "!";
+            if ($userExist[0]['email'] == $data['email'] && $userExist[0]['password'] == $data['password']) {
+            echo "Welcome " . $userExist[0]['name'] . "!";
+            }
         } else {
             echo "This user doesn't exist";
         }
