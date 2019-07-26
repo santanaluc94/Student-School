@@ -5,7 +5,7 @@
                 <div class="card">
                     <div class="card-header">Register</div>
                     <div class="card-body">
-                        <form action="<?= base_url('register/register') ?>" method="post">
+                        <form action="<?= base_url('guest/register/register') ?>" method="post">
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                                 <div class="col-md-6">

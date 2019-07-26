@@ -11,7 +11,7 @@ class Register extends CI_Controller {
 	
 	public function index()
 	{
-		$this->template->show('register');
+		$this->template->show('guest/register');
 	}
 
 	public function register()

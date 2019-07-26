@@ -8,8 +8,8 @@ class Restrict extends CI_Controler{
         $json['status'] = 1;
         $json['errorList'] = array();
 
-        $email $this->input->post('email');
-        $password $this->input->post('password');
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
 
         if(empty($email)){
             $json['status'] = 0;

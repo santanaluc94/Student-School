@@ -7,13 +7,13 @@ class Template {
     {
         $CI = & get_instance();
 
-        $CI->load->view('template/header',$data);
+        $CI->load->view('guest/header',$data);
 
         $CI->load->view($view, $data);
 
-        $CI->load->view('template/footer',$data);
+        $CI->load->view('guest/footer',$data);
 
-        $CI->load->view('template/scripts',$data);
+        $CI->load->view('guest/scripts',$data);
 
     }
 }

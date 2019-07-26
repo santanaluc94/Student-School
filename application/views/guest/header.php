@@ -43,10 +43,10 @@
 
 					<ul class="social-list list-inline mb-0 position-absolute">
 						<li class="list-inline-item">
-							<a class="nav-link" href="<?= base_url('login'); ?>">Login</a>
+							<a class="nav-link" href="<?= base_url('guest/login'); ?>">Login</a>
 						</li>
 						<li class="list-inline-item">
-							<a class="nav-link" href="<?= base_url('register'); ?>">Register</a>
+							<a class="nav-link" href="<?= base_url('guest/register'); ?>">Register</a>
 						</li>
 					</ul>
 					<!-- Menu -->
