@@ -14,7 +14,7 @@ class ForgotPassword extends CI_Controller {
 		$this->template->show('guest/forgotpassword');
 	}
 
-	public function forgotPassword()
+	public function forgotPasswordPost()
 	{
 		$data = array(
 			'email' => $this->input->post('email'),

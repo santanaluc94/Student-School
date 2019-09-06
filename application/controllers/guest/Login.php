@@ -13,14 +13,4 @@ class Login extends CI_Controller {
 	{
 		$this->template->show('guest/login');
 	}
-
-	public function login()
-	{
-		$data = array(
-			'email' => $this->input->post('email'),
-			'password' => $this->input->post('password')
-		);
-
-		$this->users->loginUser($data);
-	}
 }

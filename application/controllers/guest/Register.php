@@ -14,7 +14,7 @@ class Register extends CI_Controller {
 		$this->template->show('guest/register');
 	}
 
-	public function register()
+	public function registerPost()
 	{
 		$data = array(
 			'name' => $this->input->post('name'),
