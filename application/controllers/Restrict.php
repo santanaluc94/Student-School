@@ -8,8 +8,33 @@ class Restrict extends CI_Controller {
         parent::__construct();
         $this->load->library('session');
     }
+
+    public function index()
+    {
+        if ($this->session->userdata("user_id")) {
+            $this->template->show("user/restrict.php");
+        } else {
+            $data = array(
+                'scripts' => array(
+                    'util.js',
+                    'login.js'
+                )
+            );
+            $this->template->show("guest/login.php", $data);
+        }
+    }
+
+    public function logOff()
+    {
+        $this->session->session_destroy();
+        header("Location: " . base_url() . "user/restrict");
+    }
+    
     public function ajaxLogin()
     {
+        if (!$this->input->is_ajax_request()){
+            exit("Método de login inválido.");
+        }
         $json = array();
         $json['status'] = 1;
         $json['errorList'] = array();
