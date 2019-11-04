@@ -19,20 +19,20 @@ class Users extends CI_Model
 
     public function saveUser($data)
     {
-        $userExist = $this->db->from('register')->where('email', $data['email'])->or_where('cpf', $data['cpf']);
-        
+        $userExist = $this->db->from('users')->where('email', $data['email'])->or_where('cpf', $data['cpf']);
+
         if (empty($userExist->get()->result())) {
-            $this->db->insert('register', $data);
+            $this->db->insert('users', $data);
         } else {
             echo "This user already exists";
         }
-        
+
     }
 
     public function userExist($data)
     {
-        $userExist = $this->db->from('register')->where('email', $data['email'])->where('password', $data['password'])->get()->result_array();
-        
+        $userExist = $this->db->from('users')->where('email', $data['email'])->where('password', $data['password'])->get()->result_array();
+
         if (!empty($userExist)) {
             foreach ($userExist as $key => $value) {
                 $this->setId($value['id']);
@@ -54,7 +54,7 @@ class Users extends CI_Model
 
     public function sendEmail($data)
     {
-        $this->db->from('register')->where('email', $data['email'])->where('cpf', $data['cpf']);
+        $this->db->from('users')->where('email', $data['email'])->where('cpf', $data['cpf']);
         $userExist = $this->db->get();
 
         if (!empty($userExist->result())) {
