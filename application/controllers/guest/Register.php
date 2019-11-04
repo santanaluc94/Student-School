@@ -29,6 +29,8 @@ class Register extends CI_Controller {
 		$data = $this->validateFields($data);
 
 		$this->users->saveUser($data);
+
+		redirect('users/profile');
 	}
 
 	public function validateFields($data)
@@ -92,7 +94,7 @@ class Register extends CI_Controller {
 		}
 
 		if ($this->validatePassword($data['password'])) {
-			$data['password'] = md5($this->validatePassword($data['password']));
+			$data['password'] = md5($data['password']);
 		} else {
 			if (empty($wrongValues)) {
 				$wrongValues = "password";
