@@ -43,7 +43,7 @@
                             <div class="form-group row">
                                 <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
                                 <div class="col-md-6">
-                                    <select type="custom-select" id="gender" class="form-control" name="gender" required>
+                                    <select type="custom-select" id="gender" class="form-control" name="gender" required style="padding-top: 0; padding-bottom:0">
 									    <option value="0"></option>
 									    <option value="1">Male</option>
 									    <option value="2">Female</option>
