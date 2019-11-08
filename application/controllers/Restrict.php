@@ -1,8 +1,9 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Restrict extends CI_Controller {
-    
+class Restrict extends CI_Controller
+{
+
     public function __construct()
     {
         parent::__construct();
@@ -29,10 +30,10 @@ class Restrict extends CI_Controller {
         $this->session->session_destroy();
         header("Location: " . base_url() . "user/restrict");
     }
-    
+
     public function ajaxLogin()
     {
-        if (!$this->input->is_ajax_request()){
+        if (!$this->input->is_ajax_request()) {
             exit("Método de login inválido.");
         }
         $json = array();
@@ -40,10 +41,10 @@ class Restrict extends CI_Controller {
         $json['errorList'] = array();
 
         $data = array(
-			'email' => $this->input->post('email'),
-			'password' => $this->input->post('password')
+            'email' => $this->input->post('email'),
+            'password' => $this->input->post('password')
         );
-        
+
         if (empty($data['email'])) {
             $json['status'] = 0;
             $json['errorList']['#email'] = "Preencha seu e-mail!";
@@ -53,8 +54,8 @@ class Restrict extends CI_Controller {
         } else {
             $this->load->model("users");
             $result = $this->users->userExist($data);
-            
-            if($result != null) {
+
+            if ($result != null) {
                 $json['status'] = 1;
                 $id = $this->users->getId();
                 $password = $this->users->getPassword();

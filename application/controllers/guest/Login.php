@@ -1,16 +1,17 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class Login extends CI_Controller {
+class Login extends CI_Controller
+{
 
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->model('users');
-	}
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('users');
+    }
 
     public function index()
-	{
-		$this->template->show('guest/login');
-	}
+    {
+        $this->template->show('guest/login');
+    }
 }

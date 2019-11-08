@@ -23,10 +23,32 @@ class Users extends CI_Model
 
         if (empty($userExist->get()->result())) {
             $this->db->insert('users', $data);
-        } else {
-            echo "This user already exists";
         }
 
+        $this->checkFieldsIsEquals($data);
+    }
+
+    public function checkFieldsIsEquals($data)
+    {
+        $userExist = $this->db->from('users')->where('email', $data['email'])->or_where('cpf', $data['cpf'])->get()->result_array();
+
+        if (!empty($userExist)) {
+            $fieldExist = '';
+
+            if ($data['cpf'] == $userExist[0]['cpf']) {
+                $fieldExist = 'cpf';
+            }
+
+            if ($data['email'] == $userExist[0]['email']) {
+                if (empty($fieldExist)) {
+                    $fieldExist = 'email';
+                } else {
+                    $fieldExist .= "&email";
+                }
+            }
+        }
+
+        redirect('/guest/register?fieldExist=' . $fieldExist);
     }
 
     public function userExist($data)
@@ -143,5 +165,4 @@ class Users extends CI_Model
     {
         return $this->password;
     }
-
 }

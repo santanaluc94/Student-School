@@ -1,26 +1,27 @@
 <?php
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
-class ForgotPassword extends CI_Controller {
+class ForgotPassword extends CI_Controller
+{
 
-	public function __construct()
-	{
-		parent::__construct();
-		$this->load->model('users');
-	}
-	
-	public function index()
-	{
-		$this->template->show('guest/forgotpassword');
-	}
+    public function __construct()
+    {
+        parent::__construct();
+        $this->load->model('users');
+    }
 
-	public function forgotPasswordPost()
-	{
-		$data = array(
-			'email' => $this->input->post('email'),
-			'cpf' => $this->input->post('cpf')
-		);
+    public function index()
+    {
+        $this->template->show('guest/forgotpassword');
+    }
 
-		$this->users->sendEmail($data);
-	}
+    public function forgotPasswordPost()
+    {
+        $data = array(
+            'email' => $this->input->post('email'),
+            'cpf' => $this->input->post('cpf')
+        );
+
+        $this->users->sendEmail($data);
+    }
 }

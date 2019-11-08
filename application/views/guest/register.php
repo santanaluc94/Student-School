@@ -19,7 +19,7 @@
                             <div class="form-group row">
                                 <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
                                 <div class="col-md-6">
-                                    <input type="email" id="email" class="form-control" name="email" placeholder="exampl@email.com" required>
+                                    <input type="email" id="email" class="form-control" name="email" placeholder="example@email.com" required>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -69,17 +69,31 @@
                                 </button>
                             </div>
                             <?php if(isset($typeError['query'])): ?>
-                            <?php
-                                $errors = explode('=', $typeError['query']);
-                                $errors = explode('&', $errors[1]);
-                            ?>
+                                <?php
+                                    $errorsType = explode('=', $typeError['query']);
+                                    $errors = explode('&', $errorsType[1]);
+                                ?>
+                                <?php if ($errorsType[0] == "fieldExist"): ?>
+                                    <?php foreach ($errors as $error): ?>
+                                    <div class="alert alert-danger" style="margin-top: 15px;">
+                                        <span><strong><?= ucfirst($error) ?></strong> is already registered!</span>
+                                    </div>
+                                    <?php endforeach; ?>
 
-                            <?php foreach ($errors as $error): ?>
-                            <div class="alert alert-danger" style="margin-top: 15px;">
-                                <span><strong><?= ucfirst($error) ?></strong> is not valid!</span>
-                            </div>
-                            <?php endforeach; endif; ?>
-                    	</form>
+                                <?php elseif ($typeError['query'] == "UserExist"): ?>
+                                    <div class="alert alert-danger" style="margin-top: 15px;">
+                                        <span><strong>User</strong> already exist!</span>
+                                    </div>
+
+                                <?php else: ?>
+                                    <?php foreach ($errors as $error): ?>
+                                    <div class="alert alert-danger" style="margin-top: 15px;">
+                                        <span><strong><?= ucfirst($error) ?></strong> is not valid!</span>
+                                    </div>
+                                    <?php endforeach; ?>
+                                <?php endif; ?>
+                            <?php endif; ?>
+                            </form>
                     </div>
                 </div>
             </div>

@@ -2,7 +2,7 @@
 
 class Courses extends CI_Model
 {
-    
+
     public function __construct()
     {
         parent::__construct();
@@ -14,8 +14,8 @@ class Courses extends CI_Model
         $this->db->insert('courses', $data);
     }
 
-   public function getCourse()
-   {
-       return $this->db->from('courses')->get()->result_array();
-   }
+    public function getCourse()
+    {
+        return $this->db->from('courses')->get()->result_array();
+    }
 }
