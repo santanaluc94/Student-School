@@ -42,7 +42,7 @@ class Restrict extends CI_Controller
 
         $data = array(
             'email' => $this->input->post('email'),
-            'password' => $this->input->post('password')
+            'password' => md5($this->input->post('password'))
         );
 
         if (empty($data['email'])) {
