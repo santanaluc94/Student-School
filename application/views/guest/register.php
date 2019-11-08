@@ -1,5 +1,5 @@
 <?php
-    $typeError = parse_url($_SERVER['REQUEST_URI']);
+$typeError = parse_url($_SERVER['REQUEST_URI']);
 ?>
 
 <main class="content">
@@ -44,10 +44,10 @@
                                 <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
                                 <div class="col-md-6">
                                     <select type="custom-select" id="gender" class="form-control" name="gender" required style="padding-top: 0; padding-bottom:0">
-									    <option value="0"></option>
-									    <option value="1">Male</option>
-									    <option value="2">Female</option>
-									    <option value="3">Other</option>
+                                        <option value="0"></option>
+                                        <option value="1">Male</option>
+                                        <option value="2">Female</option>
+                                        <option value="3">Other</option>
                                     </select>
                                 </div>
                             </div>
@@ -57,7 +57,7 @@
                                     <input type="password" id="password" class="form-control password" name="password" required>
                                 </div>
                             </div>
-							<div class="form-group row">
+                            <div class="form-group row">
                                 <label for="confirm-password" class="col-md-4 col-form-label text-md-right">Confirm Password</label>
                                 <div class="col-md-6">
                                     <input type="password" id="confirm-password" class="form-control password" name="cpassword" required>
@@ -68,32 +68,32 @@
                                     Register
                                 </button>
                             </div>
-                            <?php if(isset($typeError['query'])): ?>
+                            <?php if (isset($typeError['query'])) : ?>
                                 <?php
                                     $errorsType = explode('=', $typeError['query']);
                                     $errors = explode('&', $errorsType[1]);
-                                ?>
-                                <?php if ($errorsType[0] == "fieldExist"): ?>
-                                    <?php foreach ($errors as $error): ?>
-                                    <div class="alert alert-danger" style="margin-top: 15px;">
-                                        <span><strong><?= ucfirst($error) ?></strong> is already registered!</span>
-                                    </div>
+                                    ?>
+                                <?php if ($errorsType[0] == "fieldExist") : ?>
+                                    <?php foreach ($errors as $error) : ?>
+                                        <div class="alert alert-danger" style="margin-top: 15px;">
+                                            <span><strong><?= ucfirst($error) ?></strong> is already registered!</span>
+                                        </div>
                                     <?php endforeach; ?>
 
-                                <?php elseif ($typeError['query'] == "UserExist"): ?>
+                                <?php elseif ($typeError['query'] == "UserExist") : ?>
                                     <div class="alert alert-danger" style="margin-top: 15px;">
                                         <span><strong>User</strong> already exist!</span>
                                     </div>
 
-                                <?php else: ?>
-                                    <?php foreach ($errors as $error): ?>
-                                    <div class="alert alert-danger" style="margin-top: 15px;">
-                                        <span><strong><?= ucfirst($error) ?></strong> is not valid!</span>
-                                    </div>
+                                <?php else : ?>
+                                    <?php foreach ($errors as $error) : ?>
+                                        <div class="alert alert-danger" style="margin-top: 15px;">
+                                            <span><strong><?= ucfirst($error) ?></strong> is not valid!</span>
+                                        </div>
                                     <?php endforeach; ?>
                                 <?php endif; ?>
                             <?php endif; ?>
-                            </form>
+                        </form>
                     </div>
                 </div>
             </div>
