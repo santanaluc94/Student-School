@@ -10,7 +10,7 @@ $(function () {
             if (!(emailFilter.test(email)) || (email.match(illegalChars))) {
                 if (!errorMessage){
                     $("body").find(".card-body").append(
-                        '<div class="alert alert-danger" id="error_message_login"><span>Insira um e-mail válido!</span></div>'
+                        '<div class="alert alert-danger" id="error_message_login"><span>Please insert a valid e-mail!</span></div>'
                     );
                 }
 
@@ -36,7 +36,7 @@ $(function () {
                 if (json['status'] == 1) {
                     clearErrors();
                     $("body").find('.help-block').html(loadingImg("Logando..."));
-                    window.location = BASE_URL + 'users/profile';
+                    window.location = BASE_URL + 'user/dashboard';
                 } else {
                     showErrors(json['errorList']);
                 }

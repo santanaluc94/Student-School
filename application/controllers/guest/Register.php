@@ -30,7 +30,7 @@ class Register extends CI_Controller
         $data = $this->validateFields($data);
 
         if ($this->users->saveUser($data)) {
-            redirect('users/profile');
+            redirect('user/dashboard');
         }
 
         redirect('/guest/register?error=userExist');

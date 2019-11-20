@@ -13,7 +13,7 @@ class Restrict extends CI_Controller
     public function index()
     {
         if ($this->session->userdata("user_id")) {
-            $this->template->show("user/restrict.php");
+            $this->template->show("user/dashboard.php");
         } else {
             $data = array(
                 'scripts' => array(
@@ -28,7 +28,7 @@ class Restrict extends CI_Controller
     public function logOff()
     {
         $this->session->session_destroy();
-        header("Location: " . base_url() . "user/restrict");
+        header("Location: " . base_url() . "user/login");
     }
 
     public function ajaxLogin()
@@ -59,6 +59,8 @@ class Restrict extends CI_Controller
                 $json['status'] = 1;
                 $id = $this->users->getId();
                 $password = $this->users->getPassword();
+
+                $this->session->set_userdata("id", $id);
             } else {
                 $json['status'] = 0;
             }

@@ -3,7 +3,7 @@ $typeError = parse_url($_SERVER['REQUEST_URI']);
 ?>
 
 <main class="content">
-    <div class="cotainer">
+    <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
