@@ -23,12 +23,23 @@ class Users extends CI_Model
 
         if (empty($userExist->get()->result())) {
             $this->db->insert('users', $data);
+            return true;
         }
 
         $this->checkFieldsIsEquals($data);
     }
 
-    public function checkFieldsIsEquals($data)
+    public function userLogin($data)
+    {
+        $userExist = $this->db->from('users')->where('email', $data['email'])->where('password', $data['password'])->get()->result();
+        if (!empty($userExist)) {
+            return $userExist;
+        }
+
+        redirect('/guest/login?error=invalidLogin');
+    }
+
+    protected function checkFieldsIsEquals($data)
     {
         $userExist = $this->db->from('users')->where('email', $data['email'])->or_where('cpf', $data['cpf'])->get()->result_array();
 
@@ -49,29 +60,6 @@ class Users extends CI_Model
         }
 
         redirect('/guest/register?fieldExist=' . $fieldExist);
-    }
-
-    public function userExist($data)
-    {
-        $userExist = $this->db->from('users')->where('email', $data['email'])->where('password', $data['password'])->get()->result_array();
-
-        if (!empty($userExist)) {
-            foreach ($userExist as $key => $value) {
-                $this->setId($value['id']);
-                $this->setName($value['name']);
-                $this->setEmail($value['email']);
-                $this->setCpf($value['cpf']);
-                $this->setPhone($value['phone']);
-                $this->setBirthday($value['birthday']);
-                $this->setGender($value['gender']);
-                $this->setPassword($value['password']);
-            }
-            if ($userExist[0]['email'] == $data['email'] && $userExist[0]['password'] == $data['password']) {
-                return true;
-            }
-        } else {
-            return false;
-        }
     }
 
     public function sendEmail($data)

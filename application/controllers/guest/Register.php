@@ -17,7 +17,7 @@ class Register extends CI_Controller
 
     public function registerPost()
     {
-        $data = array(
+        $data = [
             'name' => $this->input->post('name'),
             'email' => $this->input->post('email'),
             'cpf' => $this->input->post('cpf'),
@@ -25,7 +25,7 @@ class Register extends CI_Controller
             'birthday' => $this->input->post('birthday'),
             'gender' => $this->input->post('gender'),
             'password' => $this->input->post('password')
-        );
+        ];
 
         $data = $this->validateFields($data);
 

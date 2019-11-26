@@ -15,12 +15,12 @@ class Restrict extends CI_Controller
         if ($this->session->userdata("user_id")) {
             $this->template->show("user/dashboard.php");
         } else {
-            $data = array(
-                'scripts' => array(
+            $data = [
+                'scripts' => [
                     'util.js',
                     'login.js'
-                )
-            );
+                ]
+            ];
             $this->template->show("guest/login.php", $data);
         }
     }
@@ -29,46 +29,5 @@ class Restrict extends CI_Controller
     {
         $this->session->session_destroy();
         header("Location: " . base_url() . "user/login");
-    }
-
-    public function ajaxLogin()
-    {
-        if (!$this->input->is_ajax_request()) {
-            exit("Método de login inválido.");
-        }
-        $json = array();
-        $json['status'] = 1;
-        $json['errorList'] = array();
-
-        $data = array(
-            'email' => $this->input->post('email'),
-            'password' => md5($this->input->post('password'))
-        );
-
-        if (empty($data['email'])) {
-            $json['status'] = 0;
-            $json['errorList']['#email'] = "Preencha seu e-mail!";
-        } elseif (empty($data['password'])) {
-            $json['status'] = 0;
-            $json['errorList']['#password'] = "Preencha o campo de senha!";
-        } else {
-            $this->load->model("users");
-            $result = $this->users->userExist($data);
-
-            if ($result != null) {
-                $json['status'] = 1;
-                $id = $this->users->getId();
-                $password = $this->users->getPassword();
-
-                $this->session->set_userdata("id", $id);
-            } else {
-                $json['status'] = 0;
-            }
-        }
-        if ($json['status'] == 0) {
-            $json['errorList']['btn_login'] = "Usuário e/ou senha incorretos!";
-        }
-
-        echo json_encode($json);
     }
 }

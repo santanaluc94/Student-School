@@ -13,9 +13,9 @@ class Home extends CI_Controller
     {
         $this->load->model('courses');
         $courses = $this->courses->getCourse();
-        $data = array(
+        $data = [
             'courses' => $courses
-        );
+        ];
         $this->template->show('home', $data);
     }
 }

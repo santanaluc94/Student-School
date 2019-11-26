@@ -17,10 +17,10 @@ class ForgotPassword extends CI_Controller
 
     public function forgotPasswordPost()
     {
-        $data = array(
+        $data = [
             'email' => $this->input->post('email'),
             'cpf' => $this->input->post('cpf')
-        );
+        ];
 
         $this->validateFields($data);
 
