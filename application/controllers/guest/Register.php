@@ -7,6 +7,7 @@ class Register extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->library('session');
         $this->load->model('users');
     }
 
@@ -30,6 +31,10 @@ class Register extends CI_Controller
         $data = $this->validateFields($data);
 
         if ($this->users->saveUser($data)) {
+            $id = $this->db->insert_id();
+            $userData = $this->users->getDataById($id);
+            $this->session->set_userdata("userData", $userData[0]);
+
             redirect('user/dashboard');
         }
 
