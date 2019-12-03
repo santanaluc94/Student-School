@@ -74,6 +74,12 @@ class Users extends CI_Model
         }
     }
 
+    public function getDataById($id)
+    {
+        $userData = $this->db->from('users')->where('id', $id)->get()->result();
+        return $userData;
+    }
+
     public function setId($id)
     {
         $this->id = $id;
