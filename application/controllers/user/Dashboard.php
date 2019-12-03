@@ -20,7 +20,7 @@ class Dashboard extends CI_Controller
                     'login.js'
                 ]
             ];
-            $this->template->show("guest/login.php", $data);
+            $this->template->show("user/dashboard.php", $data);
         }
     }
 
