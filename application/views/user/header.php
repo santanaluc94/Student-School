@@ -40,6 +40,20 @@
                         </a>
                     </h1>
 
+                    <ul class="social-list list-inline mb-0 position-absolute">
+                        <li class="list-inline-item">
+                            <a class="nav-link" href="<?= base_url('user/dashboard'); ?>">Dashboard</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="nav-link" href="<?= base_url('user/my-courses'); ?>">My Courses</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="nav-link" href="<?= base_url('user/profile'); ?>">Profile</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="nav-link" href="<?= base_url('user/dashboard/logOut'); ?>">Log Out</a>
+                        </li>
+                    </ul>
                     <!-- Menu -->
                 </nav>
             </div>

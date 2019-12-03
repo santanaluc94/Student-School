@@ -24,7 +24,7 @@ class Dashboard extends CI_Controller
         }
     }
 
-    public function logOff()
+    public function logOut()
     {
         $this->session->sess_destroy();
         header("Location: " . base_url() . "guest/login");
