@@ -9,7 +9,7 @@ class Dashboard extends CI_Controller
         $this->load->library('session');
     }
 
-    public function index()
+    public function index(): void
     {
         if ($this->session->userdata("id")) {
             $this->template->show('user/dashboard');
@@ -24,7 +24,7 @@ class Dashboard extends CI_Controller
         }
     }
 
-    public function logOut()
+    public function logOut(): void
     {
         $this->session->sess_destroy();
         header("Location: " . base_url() . "guest/login");

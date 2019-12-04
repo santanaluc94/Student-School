@@ -80,82 +80,82 @@ class Users extends CI_Model
         return $userData;
     }
 
-    public function setId($id)
+    public function setId($id): void
     {
         $this->id = $id;
     }
 
-    public function setName($name)
+    public function setName($name): void
     {
         $this->name = $name;
     }
 
-    public function setEmail($email)
+    public function setEmail($email): void
     {
         $this->email = $email;
     }
 
-    public function setCpf($cpf)
+    public function setCpf($cpf): void
     {
         $this->cpf = $cpf;
     }
 
-    public function setPhone($phone)
+    public function setPhone($phone): void
     {
         $this->phone = $phone;
     }
 
-    public function setBirthday($birthday)
+    public function setBirthday($birthday): void
     {
         $this->birthday = $birthday;
     }
 
-    public function setGender($gender)
+    public function setGender($gender): void
     {
         $this->gender = $gender;
     }
 
-    public function setPassword($password)
+    public function setPassword($password): void
     {
         $this->password = $password;
     }
 
-    public function getId()
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getName()
+    public function getName(): string
     {
         return $this->name;
     }
 
-    public function getEmail()
+    public function getEmail(): string
     {
         return $this->email;
     }
 
-    public function getCpf()
+    public function getCpf(): string
     {
         return $this->cpf;
     }
 
-    public function getPhone()
+    public function getPhone(): string
     {
         return $this->phone;
     }
 
-    public function getBirthday()
+    public function getBirthday(): date
     {
         return $this->birthday;
     }
 
-    public function getGender()
+    public function getGender(): string
     {
         return $this->gender;
     }
 
-    public function getPassword()
+    public function getPassword(): string
     {
         return $this->password;
     }

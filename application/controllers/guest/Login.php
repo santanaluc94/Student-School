@@ -11,12 +11,12 @@ class Login extends CI_Controller
         $this->load->model('users');
     }
 
-    public function index()
+    public function index(): void
     {
         $this->template->show('guest/login');
     }
 
-    public function loginPost()
+    public function loginPost(): void
     {
         $data = [
             'email' => $this->input->post('email'),
@@ -31,10 +31,9 @@ class Login extends CI_Controller
 
             redirect('/user/dashboard');
         }
-
     }
 
-    public function validateEmail($data)
+    public function validateEmail($data): bool
     {
         if (filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
             return true;

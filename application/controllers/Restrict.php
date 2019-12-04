@@ -10,7 +10,7 @@ class Restrict extends CI_Controller
         $this->load->library('session');
     }
 
-    public function index()
+    public function index(): void
     {
         if ($this->session->userdata("user_id")) {
             $this->template->show("user/dashboard.php");
@@ -23,11 +23,5 @@ class Restrict extends CI_Controller
             ];
             $this->template->show("guest/login.php", $data);
         }
-    }
-
-    public function logOff()
-    {
-        $this->session->session_destroy();
-        header("Location: " . base_url() . "user/login");
     }
 }
