@@ -56,7 +56,7 @@ class ForgotPassword extends CI_Controller
         redirect('/guest/forgotPassword?error=' . $wrongValues);
     }
 
-    public function validateCpf($cpf): bool
+    public function validateCpf(string $cpf)
     {
         if (strlen($cpf) === 14) {
 

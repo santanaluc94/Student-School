@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller
+class Dashboard extends MY_Controller
 {
     public function __construct()
     {
@@ -11,7 +11,7 @@ class Dashboard extends CI_Controller
 
     public function index(): void
     {
-        if ($this->session->userdata("id")) {
+        if ($this->hasSession()) {
             $this->template->show('user/dashboard');
         } else {
             $data = [

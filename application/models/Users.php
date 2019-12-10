@@ -74,50 +74,58 @@ class Users extends CI_Model
         }
     }
 
-    public function getDataById($id)
+    public function getDataById($id): array
     {
         $userData = $this->db->from('users')->where('id', $id)->get()->result();
         return $userData;
     }
 
-    public function setId($id): void
+    public function setId(string $id): self
     {
         $this->id = $id;
+        return $this;
     }
 
-    public function setName($name): void
+    public function setName(string $name): self
     {
         $this->name = $name;
+        return $this;
     }
 
-    public function setEmail($email): void
+    public function setEmail(string $email): self
     {
         $this->email = $email;
+        return $this;
     }
 
-    public function setCpf($cpf): void
+    public function setCpf(string $cpf): self
     {
         $this->cpf = $cpf;
+        return $this;
     }
 
-    public function setPhone($phone): void
+    public function setPhone(string $phone): self
     {
         $this->phone = $phone;
+        return $this;
     }
 
-    public function setBirthday($birthday): void
+    public function setBirthday(string $birthday): self
     {
         $this->birthday = $birthday;
+        return $this;
     }
 
-    public function setGender($gender): void
+    public function setGender(string $gender): self
     {
         $this->gender = $gender;
+        return $this;
     }
 
-    public function setPassword($password): void
+    public function setPassword(string $password): self
     {
         $this->password = $password;
+        return $this;
     }
 
     public function getId(): int
@@ -145,7 +153,7 @@ class Users extends CI_Model
         return $this->phone;
     }
 
-    public function getBirthday(): date
+    public function getBirthday(): string
     {
         return $this->birthday;
     }

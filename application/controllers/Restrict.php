@@ -13,7 +13,7 @@ class Restrict extends CI_Controller
     public function index(): void
     {
         if ($this->session->userdata("user_id")) {
-            $this->template->show("user/dashboard.php");
+            redirect("user/dashboard.php");
         } else {
             $data = [
                 'scripts' => [
@@ -21,7 +21,7 @@ class Restrict extends CI_Controller
                     'login.js'
                 ]
             ];
-            $this->template->show("guest/login.php", $data);
+            redirect("guest/login.php", $data);
         }
     }
 }
