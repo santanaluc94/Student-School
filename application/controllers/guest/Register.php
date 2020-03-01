@@ -11,12 +11,12 @@ class Register extends CI_Controller
         $this->load->model('users');
     }
 
-    public function index()
+    public function index(): void
     {
         $this->template->show('guest/register');
     }
 
-    public function registerPost()
+    public function registerPost(): void
     {
         $data = [
             'name' => $this->input->post('name'),
@@ -41,7 +41,7 @@ class Register extends CI_Controller
         redirect('/guest/register?error=userExist');
     }
 
-    public function validateFields($data)
+    public function validateFields(array $data)
     {
         $wrongValues = '';
 
@@ -118,7 +118,7 @@ class Register extends CI_Controller
         redirect('/guest/register?error=' . $wrongValues);
     }
 
-    public function validateCpf($cpf)
+    public function validateCpf(string $cpf)
     {
         if (strlen($cpf) === 14) {
 
@@ -131,19 +131,20 @@ class Register extends CI_Controller
         return false;
     }
 
-    public function validatePhone($phone)
+    public function validatePhone(string $phone)
     {
         if (strlen($phone) == 14 || strlen($phone) == 15) {
             $removingDash = str_replace("-", "", $phone);
             $removingFirstParentesis = str_replace("(", "", $removingDash);
             $phone = str_replace(") ", "-", $removingFirstParentesis);
+
             return $phone;
         }
 
         return false;
     }
 
-    public function validateBirthday($date)
+    public function validateBirthday(string $date)
     {
         if (strlen($date) === 10) {
             $arrayDate = explode("/", $date);
@@ -155,7 +156,7 @@ class Register extends CI_Controller
         return false;
     }
 
-    public function validatePassword($password)
+    public function validatePassword(string $password): bool
     {
         $cpassword = $this->input->post('cpassword');
 

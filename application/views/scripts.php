@@ -9,10 +9,8 @@
 <script type="text/javascript" src="<?= base_url('public/js/util.js'); ?>"></script>
 <script type="text/javascript" src="<?= base_url('public/js/login.js'); ?>"></script>
 
-<?php if (base_url($this->uri->uri_string()) == base_url('guest/register') || base_url($this->uri->uri_string()) == base_url('guest/forgotPassword')) : ?>
-    <script type="text/javascript" src="<?= base_url('public/jquery_mask/dist/jquery.mask.js'); ?>"></script>
-    <script type="text/javascript" src="<?= base_url('public/jquery_mask/dist/jquery.mask.min.js'); ?>"></script>
-<?php endif; ?>
+<script type="text/javascript" src="<?= base_url('public/jquery_mask/dist/jquery.mask.js'); ?>"></script>
+<script type="text/javascript" src="<?= base_url('public/jquery_mask/dist/jquery.mask.min.js'); ?>"></script>
 
 </body>
 

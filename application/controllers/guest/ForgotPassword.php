@@ -10,12 +10,12 @@ class ForgotPassword extends CI_Controller
         $this->load->model('users');
     }
 
-    public function index()
+    public function index(): void
     {
         $this->template->show('guest/forgotpassword');
     }
 
-    public function forgotPasswordPost()
+    public function forgotPasswordPost(): void
     {
         $data = [
             'email' => $this->input->post('email'),
@@ -27,7 +27,7 @@ class ForgotPassword extends CI_Controller
         $this->users->sendEmail($data);
     }
 
-    public function validateFields($data)
+    public function validateFields($data): bool
     {
         $wrongValues = '';
 
@@ -56,7 +56,7 @@ class ForgotPassword extends CI_Controller
         redirect('/guest/forgotPassword?error=' . $wrongValues);
     }
 
-    public function validateCpf($cpf)
+    public function validateCpf(string $cpf)
     {
         if (strlen($cpf) === 14) {
 

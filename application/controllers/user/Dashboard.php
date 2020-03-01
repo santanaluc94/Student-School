@@ -7,11 +7,12 @@ class Dashboard extends CI_Controller
     {
         parent::__construct();
         $this->load->library('session');
+        $this->load->helper('session_helper');
     }
 
-    public function index()
+    public function index(): void
     {
-        if ($this->session->userdata("id")) {
+        if (hasSession()) {
             $this->template->show('user/dashboard');
         } else {
             $data = [
@@ -20,11 +21,11 @@ class Dashboard extends CI_Controller
                     'login.js'
                 ]
             ];
-            $this->template->show("guest/login.php", $data);
+            $this->template->show("user/dashboard.php", $data);
         }
     }
 
-    public function logOut()
+    public function logOut(): void
     {
         $this->session->sess_destroy();
         header("Location: " . base_url() . "guest/login");
