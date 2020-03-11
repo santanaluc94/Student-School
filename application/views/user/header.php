@@ -19,7 +19,7 @@
     </script>
 
     <!-- Plugins CSS -->
-    <link rel="stylesheet" href="<?= base_url('public/plugins/jquery-flipster/dist/jquery.flipster.min.css'); ?>">
+    <link rel="stylesheet" href="<?= base_url('public/jquery_flipster_master/dist/jquery.flipster.min.css'); ?>">
 
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/theme.css'); ?>">
