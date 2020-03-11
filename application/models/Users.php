@@ -17,7 +17,58 @@ class Users extends CI_Model
         $this->load->database();
     }
 
-    public function saveUser($data)
+    public function updateUser($data)
+    {
+        if (!isset($data['id'])) {
+            redirect('/guest/login?fieldExist=invalidLogin');
+        }
+
+        $fieldsToCheck = [
+            'id' => $data['id'],
+            'email' => $data['email'],
+            'cpf' => $data['cpf']
+        ];
+
+        $userExist = $this->db->from('users')->where($fieldsToCheck);
+
+        if (!empty($userExist->get()->result())) {
+            $this->db->where('id', $data['id'])->update('users', $data);
+            return $userExist;
+        }
+
+        // Function to errors to url
+        $this->checkFieldsToUpdate($data);
+        redirect('/guest/login');
+    }
+
+    protected function checkFieldsToUpdate($data)
+    {
+        $userExist = $this->db->from('users')
+            ->where('email', $data['email'])
+            ->or_where('cpf', $data['cpf'])
+            ->get()
+            ->result_array();
+
+        if (!empty($userExist)) {
+            $fieldExist = '';
+
+            if ($data['cpf'] == $userExist[0]['cpf']) {
+                $fieldExist = 'cpf';
+            }
+
+            if ($data['email'] == $userExist[0]['email']) {
+                if (empty($fieldExist)) {
+                    $fieldExist = 'email';
+                } else {
+                    $fieldExist .= "&email";
+                }
+            }
+        }
+
+        redirect('/user/profile?fieldExist=' . $fieldExist);
+    }
+
+    public function createUser($data)
     {
         $userExist = $this->db->from('users')->where('email', $data['email'])->or_where('cpf', $data['cpf']);
 
@@ -59,7 +110,7 @@ class Users extends CI_Model
             }
         }
 
-        redirect('/guest/register?fieldExist=' . $fieldExist);
+        redirect('/guest/login?fieldExist=' . $fieldExist);
     }
 
     public function sendEmail($data)

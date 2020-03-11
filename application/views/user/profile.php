@@ -1,13 +1,45 @@
+<?php
+$typeError = parse_url($_SERVER['REQUEST_URI']);
+?>
+
 <main class="content">
     <div class="container">
         <h1>Profile Page<h1>
     </div>
     <div class="row justify-content-center">
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-header">My Account</div>
+                <div class="card-body">
+                    <div>
+                        <a href="<?= base_url('user/profile') ?>">Personal Information</a>
+                    </div>
+                    <div>
+                        <a href="<?= base_url('user/profile') ?>">Personal Information</a>
+                    </div>
+                    <div>
+                        <a href="<?= base_url('user/profile') ?>">Personal Information</a>
+                    </div>
+                    <div>
+                        <a href="<?= base_url('user/profile') ?>">Personal Information</a>
+                    </div>
+                    <div>
+                        <a href="<?= base_url('user/profile') ?>">Personal Information</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <div class="col-md-8">
             <div class="card">
-                <div class="card-header">Register</div>
+                <div class="card-header">Personal Information</div>
                 <div class="card-body">
-                    <form action="<?= base_url('user/profile/profilePost') ?>" method="post">
+                    <form action="<?= base_url('user/profilePost/execute') ?>" method="post">
+                        <div class="form-group row" style="display: none">
+                            <label for="id" class="col-md-4 col-form-label text-md-right">User Id</label>
+                            <div class="col-md-6">
+                                <input value="<?= $id ?>" type="number" id="id" class="form-control" name="id" required />
+                            </div>
+                        </div>
                         <div class="form-group row">
                             <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                             <div class="col-md-6">
@@ -49,6 +81,36 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col-md-6 offset-md-4">
+                            <button type="submit" class="btn btn-primary">
+                                Save
+                            </button>
+                        </div>
+                        <?php if (isset($typeError['query'])) : ?>
+                            <?php
+                            $errorsType = explode('=', $typeError['query']);
+                            $errors = explode('&', $errorsType[1]);
+                            ?>
+                            <?php if ($errorsType[0] == "fieldExist") : ?>
+                                <?php foreach ($errors as $error) : ?>
+                                    <div class="alert alert-danger" style="margin-top: 15px;">
+                                        <span><strong><?= ucfirst($error) ?></strong> is already registered!</span>
+                                    </div>
+                                <?php endforeach; ?>
+
+                            <?php elseif ($typeError['query'] == "UserExist") : ?>
+                                <div class="alert alert-danger" style="margin-top: 15px;">
+                                    <span><strong>User</strong> already exist!</span>
+                                </div>
+
+                            <?php else : ?>
+                                <?php foreach ($errors as $error) : ?>
+                                    <div class="alert alert-danger" style="margin-top: 15px;">
+                                        <span><strong><?= ucfirst($error) ?></strong> is not valid!</span>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                        <?php endif; ?>
 
                     </form>
                 </div>
