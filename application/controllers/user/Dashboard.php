@@ -8,20 +8,18 @@ class Dashboard extends CI_Controller
         parent::__construct();
         $this->load->library('session');
         $this->load->helper('session_helper');
+        $this->load->helper('user_data_helper');
     }
 
     public function index(): void
     {
         if (hasSession()) {
-            $this->template->show('user/dashboard');
-        } else {
-            $data = [
-                'scripts' => [
-                    'util.js',
-                    'login.js'
-                ]
-            ];
+            $data = get_object_vars($_SESSION['userData']);
+            $data = formatUserData($data);
+
             $this->template->show("user/dashboard.php", $data);
+        } else {
+            redirect('/guest/login');
         }
     }
 
