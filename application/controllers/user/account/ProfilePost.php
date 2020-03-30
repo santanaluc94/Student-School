@@ -24,11 +24,12 @@ class ProfilePost extends CI_Controller
             'gender' => $this->input->post('gender'),
         ];
         $data = $this->validateFields($data);
-        $this->users->updateUser($data);
 
-        $this->session->set_userdata("userData", $data);
+        $userData = $this->users->updateUser($data);
 
-        redirect('/user/profile');
+        $this->session->set_userdata("userData", $userData[0]);
+
+        redirect('/user/account/profile');
     }
 
     public function validateFields(array $data)

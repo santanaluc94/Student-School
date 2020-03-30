@@ -29,10 +29,14 @@ class Users extends CI_Model
             'cpf' => $data['cpf']
         ];
 
-        $userExist = $this->db->from('users')->where($fieldsToCheck);
+        $userExist = $this->db->from('users')
+            ->where($fieldsToCheck)
+            ->get()
+            ->result();
 
-        if (!empty($userExist->get()->result())) {
+        if (!empty($userExist)) {
             $this->db->where('id', $data['id'])->update('users', $data);
+            var_dump($userExist);
             return $userExist;
         }
 
@@ -82,7 +86,16 @@ class Users extends CI_Model
 
     public function userLogin($data)
     {
-        $userExist = $this->db->from('users')->where('email', $data['email'])->where('password', $data['password'])->get()->result();
+        $fieldsToCheck = [
+            'email' => $data['email'],
+            'password' => $data['password']
+        ];
+
+        $userExist = $this->db->from('users')
+            ->where($fieldsToCheck)
+            ->get()
+            ->result();
+
         if (!empty($userExist)) {
             return $userExist;
         }

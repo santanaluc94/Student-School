@@ -12,19 +12,19 @@ $typeError = parse_url($_SERVER['REQUEST_URI']);
                 <div class="card-header">My Account</div>
                 <div class="card-body">
                     <div>
-                        <a href="<?= base_url('user/profile') ?>">Personal Information</a>
+                        <a href="<?= base_url('user/account/profile') ?>">Personal Information</a>
                     </div>
                     <div>
-                        <a href="<?= base_url('user/profile') ?>">Personal Information</a>
+                        <a href="<?= base_url('user/account/profile') ?>">Personal Information</a>
                     </div>
                     <div>
-                        <a href="<?= base_url('user/profile') ?>">Personal Information</a>
+                        <a href="<?= base_url('user/account/profile') ?>">Personal Information</a>
                     </div>
                     <div>
-                        <a href="<?= base_url('user/profile') ?>">Personal Information</a>
+                        <a href="<?= base_url('user/account/profile') ?>">Personal Information</a>
                     </div>
                     <div>
-                        <a href="<?= base_url('user/profile') ?>">Personal Information</a>
+                        <a href="<?= base_url('user/account/profile') ?>">Personal Information</a>
                     </div>
                 </div>
             </div>
@@ -33,7 +33,7 @@ $typeError = parse_url($_SERVER['REQUEST_URI']);
             <div class="card">
                 <div class="card-header">Personal Information</div>
                 <div class="card-body">
-                    <form action="<?= base_url('user/profilePost/execute') ?>" method="post">
+                    <form action="<?= base_url('user/account/profilePost/execute') ?>" method="post">
                         <div class="form-group row" style="display: none">
                             <label for="id" class="col-md-4 col-form-label text-md-right">User Id</label>
                             <div class="col-md-6">

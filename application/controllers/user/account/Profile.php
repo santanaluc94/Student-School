@@ -17,7 +17,7 @@ class Profile extends CI_Controller
             $data = get_object_vars($_SESSION['userData']);
             $data = formatUserData($data);
 
-            $this->template->show("user/profile.php", $data);
+            $this->template->show("user/account/profile.php", $data);
         } else {
             redirect('/guest/login');
         }

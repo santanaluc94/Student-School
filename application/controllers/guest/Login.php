@@ -51,7 +51,7 @@ class Login extends CI_Controller
         redirect('/guest/login?error=email');
     }
 
-    public function formatGender(string $gender)
+    public function formatGender(string $gender): string
     {
         if ($gender === "Male") {
             $value = 1;
