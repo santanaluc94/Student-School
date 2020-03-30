@@ -1,5 +1,3 @@
 <main class="content">
-    <div class="container">
-        <h1>Login Page<h1>
-    </div>
+    <h1>Welcome <?= $_SESSION['userData']->name ?>!</h1>
 </main>
