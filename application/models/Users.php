@@ -138,6 +138,13 @@ class Users extends CI_Model
         }
     }
 
+    public function deleteUser($id): void
+    {
+        $this->db->delete('users', ['id' => $id]);
+
+        redirect('/');
+    }
+
     public function getDataById($id): array
     {
         $userData = $this->db->from('users')->where('id', $id)->get()->result();
