@@ -7,8 +7,10 @@ function __construct()
 
 function hasSession(): bool
 {
-    if (count($_SESSION) > 1) {
-        return true;
+    if (isset($_SESSION)) {
+        if (count($_SESSION) > 1) {
+            return true;
+        }
     }
 
     return false;
