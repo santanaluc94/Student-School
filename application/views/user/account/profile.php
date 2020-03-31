@@ -7,28 +7,10 @@ $typeError = parse_url($_SERVER['REQUEST_URI']);
         <h1>Profile Page<h1>
     </div>
     <div class="row justify-content-center">
-        <div class="col-md-3">
-            <div class="card">
-                <div class="card-header">My Account</div>
-                <div class="card-body">
-                    <div>
-                        <a href="<?= base_url('user/account/profile') ?>">Personal Information</a>
-                    </div>
-                    <div>
-                        <a href="<?= base_url('user/account/profile') ?>">Personal Information</a>
-                    </div>
-                    <div>
-                        <a href="<?= base_url('user/account/profile') ?>">Personal Information</a>
-                    </div>
-                    <div>
-                        <a href="<?= base_url('user/account/profile') ?>">Personal Information</a>
-                    </div>
-                    <div>
-                        <a href="<?= base_url('user/account/profile') ?>">Personal Information</a>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <!-- Menu to Profile Page  -->
+        <?php $this->load->view('user/account/account_menu'); ?>
+
+        <!-- Page Profile -->
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">Personal Information</div>

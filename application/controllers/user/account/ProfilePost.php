@@ -12,6 +12,15 @@ class ProfilePost extends CI_Controller
         $this->load->helper('user_data_helper');
     }
 
+    public function index(): void
+    {
+        if (hasSession()) {
+            redirect('/user/account/profile');
+        } else {
+            redirect('/guest/login');
+        }
+    }
+
     public function execute(): void
     {
         $data = [
@@ -96,7 +105,7 @@ class ProfilePost extends CI_Controller
             return $data;
         }
 
-        redirect('/user/profile?error=' . $wrongValues);
+        redirect('/user/account/profile?error=' . $wrongValues);
     }
 
     public function validateCpf(string $cpf)

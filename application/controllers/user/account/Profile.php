@@ -14,6 +14,7 @@ class Profile extends CI_Controller
     public function index(): void
     {
         if (hasSession()) {
+            // Get user session
             $data = get_object_vars($_SESSION['userData']);
             $data = formatUserData($data);
 

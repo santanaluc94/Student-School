@@ -28,11 +28,4 @@ class Dashboard extends CI_Controller
         $this->session->sess_destroy();
         header("Location: " . base_url() . "guest/login");
     }
-
-    public function test()
-    {
-        var_dump($this->session->get_userdata());
-        //var_dump(get_class_methods($this->session));
-        echo 'XABLAU!!!';
-    }
 }
