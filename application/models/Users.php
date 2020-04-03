@@ -17,7 +17,7 @@ class Users extends CI_Model
         $this->load->database();
     }
 
-    public function updateUser($data)
+    public function updateUser(array $data)
     {
         if (!isset($data['id'])) {
             redirect('/guest/login?fieldExist=invalidLogin');
@@ -37,6 +37,27 @@ class Users extends CI_Model
         if (!empty($userExist)) {
             $this->db->where('id', $data['id'])->update('users', $data);
             var_dump($userExist);
+            return $userExist;
+        }
+
+        // Function to errors to url
+        $this->checkFieldsToUpdate($data);
+        redirect('/guest/login');
+    }
+
+    public function updatePasswordUser(array $data)
+    {
+        if (!isset($data['id'])) {
+            redirect('/guest/login?fieldExist=invalidLogin');
+        }
+
+        $userExist = $this->db->from('users')
+            ->where('id', $data['id'])
+            ->get()
+            ->result();
+
+        if (!empty($userExist)) {
+            $this->db->set('password', $data['newPassword'])->where('id', $data['id'])->update('users');
             return $userExist;
         }
 
@@ -145,7 +166,13 @@ class Users extends CI_Model
         redirect('/');
     }
 
-    public function getDataById($id): array
+    public function getDataById($id, string $field): string
+    {
+        $value = $this->db->select($field)->from('users')->where('id', $id)->get()->result_array();
+        return $value[0][$field];
+    }
+
+    public function getAllDatasById($id): array
     {
         $userData = $this->db->from('users')->where('id', $id)->get()->result();
         return $userData;

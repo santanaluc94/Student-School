@@ -40,7 +40,7 @@ class Register extends CI_Controller
 
         if ($this->users->createUser($data)) {
             $id = $this->db->insert_id();
-            $userData = $this->users->getDataById($id);
+            $userData = $this->users->getAllDatasById($id);
             $this->session->set_userdata("userData", $userData[0]);
 
             redirect('user/dashboard');
