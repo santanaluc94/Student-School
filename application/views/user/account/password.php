@@ -59,6 +59,10 @@ $typeError = parse_url($_SERVER['REQUEST_URI']);
                                     <div class="alert alert-danger" style="margin-top: 15px;">
                                         <span><strong>Current Password</strong> is wrong!</span>
                                     </div>
+                                <?php elseif ($errorsType[1] == "currentPasswordIsEqualsToNewPassword") : ?>
+                                    <div class="alert alert-danger" style="margin-top: 15px;">
+                                        <span><strong>Current Password</strong> must be different from <strong>New Password</strong>!</span>
+                                    </div>
                                 <?php elseif ($errorsType[1] == "passwordChanged") : ?>
                                     <div class="alert alert-success" style="margin-top: 15px;">
                                         <span><strong>Current Password</strong> changed!</span>
