@@ -37,6 +37,10 @@ class PasswordPost extends CI_Controller
             redirect('/user/account/password?error=currentPasswordIsWrong');
         }
 
+        if ($this->checkCurrentPasswordisEqualsToNewPassword($data)) {
+            redirect('/user/account/password?error=currentPasswordIsEqualsToNewPassword');
+        }
+
         $userData = $this->users->updatePasswordUser($data);
 
         $this->session->set_userdata("userData", $userData[0]);
@@ -58,6 +62,15 @@ class PasswordPost extends CI_Controller
         $passwordUser = $this->users->getDataById($id, 'password');
 
         if ($currentPassword === $passwordUser) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function checkCurrentPasswordisEqualsToNewPassword(array $data): bool
+    {
+        if ($data['currentPassword'] === $data['newPassword']) {
             return true;
         }
 
