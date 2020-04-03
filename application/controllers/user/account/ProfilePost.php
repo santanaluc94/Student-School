@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Register extends CI_Controller
+class ProfilePost extends CI_Controller
 {
     public function __construct()
     {
@@ -15,38 +15,30 @@ class Register extends CI_Controller
     public function index(): void
     {
         if (hasSession()) {
-            $data = get_object_vars($_SESSION['userData']);
-            $data = formatUserData($data);
-
-            redirect("/user/dashboard", $data);
+            redirect('/user/account/profile');
+        } else {
+            redirect('/guest/login');
         }
-
-        $this->template->show('guest/register');
     }
 
-    public function registerPost(): void
+    public function execute(): void
     {
         $data = [
+            'id' => $this->input->post('id'),
             'name' => $this->input->post('name'),
             'email' => $this->input->post('email'),
             'cpf' => $this->input->post('cpf'),
             'phone' => $this->input->post('phone'),
             'birthday' => $this->input->post('birthday'),
             'gender' => $this->input->post('gender'),
-            'password' => $this->input->post('password')
         ];
-
         $data = $this->validateFields($data);
 
-        if ($this->users->createUser($data)) {
-            $id = $this->db->insert_id();
-            $userData = $this->users->getDataById($id);
-            $this->session->set_userdata("userData", $userData[0]);
+        $userData = $this->users->updateUser($data);
 
-            redirect('user/dashboard');
-        }
+        $this->session->set_userdata("userData", $userData[0]);
 
-        redirect('/guest/register?error=userExist');
+        redirect('/user/account/profile');
     }
 
     public function validateFields(array $data)
@@ -109,21 +101,11 @@ class Register extends CI_Controller
             }
         }
 
-        if ($this->validatePassword($data['password'])) {
-            $data['password'] = md5($data['password']);
-        } else {
-            if (empty($wrongValues)) {
-                $wrongValues = "password";
-            } else {
-                $wrongValues .= "&password";
-            }
-        }
-
         if (empty($wrongValues)) {
             return $data;
         }
 
-        redirect('/guest/register?error=' . $wrongValues);
+        redirect('/user/account/profile?error=' . $wrongValues);
     }
 
     public function validateCpf(string $cpf)
@@ -159,17 +141,6 @@ class Register extends CI_Controller
             $date = $arrayDate[2] . "-" . $arrayDate[1] . "-" . $arrayDate[0];
 
             return $date;
-        }
-
-        return false;
-    }
-
-    public function validatePassword(string $password): bool
-    {
-        $cpassword = $this->input->post('cpassword');
-
-        if ($password === $cpassword) {
-            return true;
         }
 
         return false;

@@ -48,7 +48,7 @@
                             <a class="nav-link" href="<?= base_url('user/my-courses'); ?>">My Courses</a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/profile'); ?>">Profile</a>
+                            <a class="nav-link" href="<?= base_url('user/account/profile'); ?>">Profile</a>
                         </li>
                         <li class="list-inline-item">
                             <a class="nav-link" href="<?= base_url('user/search'); ?>">Search</a>

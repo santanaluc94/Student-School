@@ -10,19 +10,19 @@ class Login extends CI_Controller
         $this->load->library('session');
         $this->load->model('users');
         $this->load->helper('session_helper');
+        $this->load->helper('user_data_helper');
     }
 
     public function index(): void
     {
         if (hasSession()) {
             $data = get_object_vars($_SESSION['userData']);
-            $data['birthday'] = date("d-m-Y", (int) $data['birthday']);
-            $data['gender'] = $this->formatGender($data['gender']);
+            $data = formatUserData($data);
 
-            $this->template->show("user/profile.php", $data);
-        } else {
-            $this->template->show('guest/login');
+            redirect("/user/dashboard", $data);
         }
+
+        $this->template->show('guest/login');
     }
 
     public function loginPost(): void
@@ -51,7 +51,7 @@ class Login extends CI_Controller
         redirect('/guest/login?error=email');
     }
 
-    public function formatGender(string $gender)
+    public function formatGender(string $gender): string
     {
         if ($gender === "Male") {
             $value = 1;

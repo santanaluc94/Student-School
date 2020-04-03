@@ -8,11 +8,20 @@ class ForgotPassword extends CI_Controller
     {
         parent::__construct();
         $this->load->model('users');
+        $this->load->helper('session_helper');
+        $this->load->helper('user_data_helper');
     }
 
     public function index(): void
     {
-        $this->template->show('guest/forgotpassword');
+        if (hasSession()) {
+            $data = get_object_vars($_SESSION['userData']);
+            $data = formatUserData($data);
+
+            redirect("/user/dashboard", $data);
+        } else {
+            $this->template->show('guest/forgotpassword');
+        }
     }
 
     public function forgotPasswordPost(): void

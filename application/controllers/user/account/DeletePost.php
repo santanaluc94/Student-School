@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Dashboard extends CI_Controller
+class DeletePost extends CI_Controller
 {
     public function __construct()
     {
@@ -9,23 +9,25 @@ class Dashboard extends CI_Controller
         $this->load->library('session');
         $this->load->helper('session_helper');
         $this->load->helper('user_data_helper');
+        $this->load->model('users');
     }
 
     public function index(): void
     {
         if (hasSession()) {
-            $data = get_object_vars($_SESSION['userData']);
-            $data = formatUserData($data);
-
-            $this->template->show("user/dashboard.php", $data);
+            redirect('user/account/delete');
         } else {
             redirect('/guest/login');
         }
     }
 
-    public function logOut(): void
+    public function delete(): void
     {
-        $this->session->sess_destroy();
-        header("Location: " . base_url() . "guest/login");
+        if ($this->input->post('deleteAccount') === 'on') {
+            $id = $this->input->post('id');
+
+            $this->session->sess_destroy();
+            $this->users->deleteUser($id);
+        }
     }
 }
