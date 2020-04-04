@@ -7,7 +7,7 @@ function __construct()
 
 function hasSession(): bool
 {
-    if (isset($_SESSION)) {
+    if (isset($_SESSION['userData'])) {
         if (count($_SESSION) > 1) {
             return true;
         }

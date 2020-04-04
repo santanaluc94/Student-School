@@ -15,6 +15,7 @@ class Users extends CI_Model
     {
         parent::__construct();
         $this->load->database();
+        $this->load->helper('session_helper');
     }
 
     public function updateUser(array $data)
@@ -93,7 +94,7 @@ class Users extends CI_Model
         redirect('/user/profile?fieldExist=' . $fieldExist);
     }
 
-    public function createUser($data)
+    public function createUser($data): bool
     {
         $userExist = $this->db->from('users')->where('email', $data['email'])->or_where('cpf', $data['cpf']);
 
@@ -103,9 +104,10 @@ class Users extends CI_Model
         }
 
         $this->checkFieldsIsEquals($data);
+        return false;
     }
 
-    public function userLogin($data)
+    public function userLogin($data): array
     {
         $fieldsToCheck = [
             'email' => $data['email'],
@@ -121,30 +123,26 @@ class Users extends CI_Model
             return $userExist;
         }
 
-        redirect('/guest/login?error=invalidLogin');
+        return [];
     }
 
-    protected function checkFieldsIsEquals($data)
+    public function checkFieldsIsEquals(array $data): array
     {
         $userExist = $this->db->from('users')->where('email', $data['email'])->or_where('cpf', $data['cpf'])->get()->result_array();
 
         if (!empty($userExist)) {
-            $fieldExist = '';
+            $fieldExist = [];
 
             if ($data['cpf'] == $userExist[0]['cpf']) {
-                $fieldExist = 'cpf';
+                $fieldExist[] = 'cpf';
             }
 
             if ($data['email'] == $userExist[0]['email']) {
-                if (empty($fieldExist)) {
-                    $fieldExist = 'email';
-                } else {
-                    $fieldExist .= "&email";
-                }
+                $fieldExist[] = 'email';
             }
         }
 
-        redirect('/guest/login?fieldExist=' . $fieldExist);
+        return $fieldExist;
     }
 
     public function sendEmail($data)

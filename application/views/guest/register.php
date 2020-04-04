@@ -1,7 +1,3 @@
-<?php
-$typeError = parse_url($_SERVER['REQUEST_URI']);
-?>
-
 <main class="content">
     <div class="container">
         <div class="row justify-content-center">
@@ -9,7 +5,7 @@ $typeError = parse_url($_SERVER['REQUEST_URI']);
                 <div class="card">
                     <div class="card-header">Register</div>
                     <div class="card-body">
-                        <form action="<?= base_url('guest/register/registerPost') ?>" method="post">
+                        <form action="<?= base_url('guest/registerPost/execute') ?>" method="post">
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                                 <div class="col-md-6">
@@ -68,30 +64,19 @@ $typeError = parse_url($_SERVER['REQUEST_URI']);
                                     Register
                                 </button>
                             </div>
-                            <?php if (isset($typeError['query'])) : ?>
-                                <?php
-                                    $errorsType = explode('=', $typeError['query']);
-                                    $errors = explode('&', $errorsType[1]);
-                                    ?>
-                                <?php if ($errorsType[0] == "fieldExist") : ?>
-                                    <?php foreach ($errors as $error) : ?>
-                                        <div class="alert alert-danger" style="margin-top: 15px;">
-                                            <span><strong><?= ucfirst($error) ?></strong> is already registered!</span>
-                                        </div>
-                                    <?php endforeach; ?>
-
-                                <?php elseif ($typeError['query'] == "UserExist") : ?>
+                            <?php if ($this->session->flashdata('danger')) : ?>
+                                <?php foreach ($this->session->flashdata('danger') as $number) : ?>
                                     <div class="alert alert-danger" style="margin-top: 15px;">
-                                        <span><strong>User</strong> already exist!</span>
+                                        <?= $number ?>
                                     </div>
-
-                                <?php else : ?>
-                                    <?php foreach ($errors as $error) : ?>
-                                        <div class="alert alert-danger" style="margin-top: 15px;">
-                                            <span><strong><?= ucfirst($error) ?></strong> is not valid!</span>
-                                        </div>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            <?php if ($this->session->flashdata('warning')) : ?>
+                                <?php foreach ($this->session->flashdata('warning') as $number) : ?>
+                                    <div class="alert alert-warning" style="margin-top: 15px;">
+                                        <?= $number ?>
+                                    </div>
+                                <?php endforeach; ?>
                             <?php endif; ?>
                         </form>
                     </div>

@@ -1,7 +1,3 @@
-<?php
-$typeError = parse_url($_SERVER['REQUEST_URI']);
-?>
-
 <main class="content">
     <div class="container">
         <h1>Profile Page</h1>
@@ -46,29 +42,15 @@ $typeError = parse_url($_SERVER['REQUEST_URI']);
                                     Save
                                 </button>
                             </div>
-                            <?php if (isset($typeError['query'])) : ?>
-                                <?php
-                                $errorsType = explode('=', $typeError['query']);
-                                $errors = explode('&', $errorsType[1]);
-                                ?>
-                                <?php if ($errorsType[1] == "newPasswordIsDifferentConfirmPassword") : ?>
-                                    <div class="alert alert-danger" style="margin-top: 15px;">
-                                        <span><strong>New Password</strong> and <strong>Confirm New Password</strong> must be equals!</span>
-                                    </div>
-                                <?php elseif ($errorsType[1] == "currentPasswordIsWrong") : ?>
-                                    <div class="alert alert-danger" style="margin-top: 15px;">
-                                        <span><strong>Current Password</strong> is wrong!</span>
-                                    </div>
-                                <?php elseif ($errorsType[1] == "currentPasswordIsEqualsToNewPassword") : ?>
-                                    <div class="alert alert-danger" style="margin-top: 15px;">
-                                        <span><strong>Current Password</strong> must be different from <strong>New Password</strong>!</span>
-                                    </div>
-                                <?php elseif ($errorsType[1] == "passwordChanged") : ?>
-                                    <div class="alert alert-success" style="margin-top: 15px;">
-                                        <span><strong>Current Password</strong> changed!</span>
-                                    </div>
-                                <?php endif; ?>
-                            <?php endif; ?>
+                            <?php if ($this->session->flashdata('danger')) : ?>
+                                <div class="alert alert-danger" style="margin-top: 15px;">
+                                    <?= $this->session->flashdata('danger') ?>
+                                </div>
+                            <?php elseif ($this->session->flashdata('success')) : ?>
+                                <div class="alert alert-success" style="margin-top: 15px;">
+                                    <?= $this->session->flashdata('success') ?>
+                                </div>
+                            <?php endif ?>
                         </form>
                     </div>
                 </div>

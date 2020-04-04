@@ -30,20 +30,21 @@ class PasswordPost extends CI_Controller
         ];
 
         if (!$this->checkPasswordsIsEquals($data)) {
-            redirect('/user/account/password?error=newPasswordIsDifferentConfirmPassword');
+            $this->flashMessageAndRedirect('danger', '<span><strong>New Password</strong> and <strong>Confirm New Password</strong> must be equals!</span>', '/user/account/password');
         }
 
         if (!$this->checkCurrentPassword($data['currentPassword'], $data['id'])) {
-            redirect('/user/account/password?error=currentPasswordIsWrong');
+            $this->flashMessageAndRedirect('danger', '<span><strong>Current Password</strong> is wrong!</span>', '/user/account/password');
         }
 
         if ($this->checkCurrentPasswordisEqualsToNewPassword($data)) {
-            redirect('/user/account/password?error=currentPasswordIsEqualsToNewPassword');
+            $this->flashMessageAndRedirect('danger', '<span><strong>Current Password</strong> must be different from <strong>New Password</strong>!</span>', '/user/account/password');
         }
 
         $userData = $this->users->updatePasswordUser($data);
 
         $this->session->set_userdata("userData", $userData[0]);
+        $this->session->set_flashdata("success", "<span><strong>Current Password</strong> changed!</span>");
 
         redirect('/user/account/password?success=passwordChanged');
     }
@@ -75,5 +76,11 @@ class PasswordPost extends CI_Controller
         }
 
         return false;
+    }
+
+    public function flashMessageAndRedirect(string $messageType, string $message, string $url)
+    {
+        $this->session->set_flashdata($messageType, $message);
+        redirect($url);
     }
 }
