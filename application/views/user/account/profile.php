@@ -1,7 +1,3 @@
-<?php
-$typeError = parse_url($_SERVER['REQUEST_URI']);
-?>
-
 <main class="content">
     <div class="container">
         <h1>Profile Page</h1>
@@ -68,32 +64,25 @@ $typeError = parse_url($_SERVER['REQUEST_URI']);
                                     Save
                                 </button>
                             </div>
-                            <?php if (isset($typeError['query'])) : ?>
-                                <?php
-                                $errorsType = explode('=', $typeError['query']);
-                                $errors = explode('&', $errorsType[1]);
-                                ?>
-                                <?php if ($errorsType[0] == "fieldExist") : ?>
-                                    <?php foreach ($errors as $error) : ?>
-                                        <div class="alert alert-danger" style="margin-top: 15px;">
-                                            <span><strong><?= ucfirst($error) ?></strong> is already registered!</span>
-                                        </div>
-                                    <?php endforeach; ?>
-
-                                <?php elseif ($typeError['query'] == "UserExist") : ?>
+                            <?php if ($this->session->flashdata('danger')) : ?>
+                                <?php foreach ($this->session->flashdata('danger') as $number) : ?>
                                     <div class="alert alert-danger" style="margin-top: 15px;">
-                                        <span><strong>User</strong> already exist!</span>
+                                        <?= $number ?>
                                     </div>
-
-                                <?php else : ?>
-                                    <?php foreach ($errors as $error) : ?>
-                                        <div class="alert alert-danger" style="margin-top: 15px;">
-                                            <span><strong><?= ucfirst($error) ?></strong> is not valid!</span>
-                                        </div>
-                                    <?php endforeach; ?>
-                                <?php endif; ?>
+                                <?php endforeach; ?>
                             <?php endif; ?>
-
+                            <?php if ($this->session->flashdata('warning')) : ?>
+                                <?php foreach ($this->session->flashdata('warning') as $number) : ?>
+                                    <div class="alert alert-warning" style="margin-top: 15px;">
+                                        <?= $number ?>
+                                    </div>
+                                <?php endforeach; ?>
+                            <?php endif; ?>
+                            <?php if ($this->session->flashdata('success')) : ?>
+                                <div class="alert alert-success" style="margin-top: 15px;">
+                                    <?= $this->session->flashdata('success') ?>
+                                </div>
+                            <?php endif; ?>
                         </form>
                     </div>
                 </div>

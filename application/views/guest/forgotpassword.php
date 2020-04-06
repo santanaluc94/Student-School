@@ -1,7 +1,3 @@
-<?php
-$typeError = parse_url($_SERVER['REQUEST_URI']);
-?>
-
 <main class="content">
     <div class="container">
         <div class="row justify-content-center">
@@ -27,18 +23,12 @@ $typeError = parse_url($_SERVER['REQUEST_URI']);
                                     Send E-mail
                                 </button>
                             </div>
+                            <?php if ($this->session->flashdata('danger')) : ?>
+                                <div class="alert alert-danger" style="margin-top: 15px;">
+                                    <?= $this->session->flashdata('danger') ?>
+                                </div>
+                            <?php endif; ?>
                         </form>
-                        <?php if (isset($typeError['query'])) : ?>
-                            <?php
-                                $errorsType = explode('=', $typeError['query']);
-                                $errors = explode('&', $errorsType[1]);
-                                ?>
-                                <?php foreach ($errors as $error) : ?>
-                                    <div class="alert alert-danger" style="margin-top: 15px;">
-                                        <span><strong><?= ucfirst($error) ?></strong> is not valid!</span>
-                                    </div>
-                                <?php endforeach; ?>
-                        <?php endif; ?>
                     </div>
                 </div>
             </div>

@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class ProfilePost extends CI_Controller
+class RegisterPost extends CI_Controller
 {
     public function __construct()
     {
@@ -15,7 +15,7 @@ class ProfilePost extends CI_Controller
     public function index(): void
     {
         if (hasSession()) {
-            redirect('/user/account/profile');
+            redirect('user/account/dashboard');
         } else {
             redirect('/guest/login');
         }
@@ -24,27 +24,30 @@ class ProfilePost extends CI_Controller
     public function execute(): void
     {
         $data = [
-            'id' => $this->input->post('id'),
             'name' => $this->input->post('name'),
             'email' => $this->input->post('email'),
             'cpf' => $this->input->post('cpf'),
             'phone' => $this->input->post('phone'),
             'birthday' => $this->input->post('birthday'),
             'gender' => $this->input->post('gender'),
+            'password' => $this->input->post('password')
         ];
+
         $data = $this->validateFields($data);
 
-        if ($this->users->updateUser($data)) {
-            $userData = $this->users->getAllDatasById($data['id']);
+        if ($this->users->createUser($data)) {
+            $id = $this->db->insert_id();
+            $userData = $this->users->getAllDatasById($id);
             $this->session->set_userdata("userData", $userData[0]);
-            $this->flashMessageAndRedirect('success', '<span>User updated!</span>', '/user/account/profile');
+
+            redirect('user/dashboard');
         }
 
-        $wrongValues = $this->users->checkFieldsToUpdate($data);
-        $this->flashMessageAndRedirectWithManyErrors('warning', $wrongValues, '/user/account/profile');
+        $wrongValues = $this->users->checkFieldsIsEquals($data);
+        $this->flashMessageAndRedirectWithManyErrors('warning', $wrongValues, '/guest/register');
     }
 
-    public function validateFields(array $data): array
+    public function validateFields(array $data)
     {
         $wrongValues = [];
 
@@ -81,18 +84,20 @@ class ProfilePost extends CI_Controller
         } elseif ($data['gender'] == 3) {
             $data['gender'] = "Other";
         } else {
-            if (empty($wrongValues)) {
-                $wrongValues = "gender";
-            } else {
-                $wrongValues .= "&gender";
-            }
+            $wrongValues[] = "gender";
+        }
+
+        if ($this->validatePassword($data['password'])) {
+            $data['password'] = md5($data['password']);
+        } else {
+            $wrongValues[] = "password";
         }
 
         if (empty($wrongValues)) {
             return $data;
         }
 
-        $this->flashMessageAndRedirectWithManyErrors('danger', $wrongValues, '/user/account/profile');
+        $this->flashMessageAndRedirectWithManyErrors('danger', $wrongValues, '/guest/register');
     }
 
     public function validateCpf(string $cpf): bool
@@ -147,6 +152,17 @@ class ProfilePost extends CI_Controller
         return $date;
     }
 
+    public function validatePassword(string $password): bool
+    {
+        $cpassword = $this->input->post('cpassword');
+
+        if ($password === $cpassword) {
+            return true;
+        }
+
+        return false;
+    }
+
     public function flashMessageAndRedirectWithManyErrors(string $messageType, array $wrongValues, string $url)
     {
         $messages = [];
@@ -165,12 +181,6 @@ class ProfilePost extends CI_Controller
         }
 
         $this->session->set_flashdata($messageType, $messages);
-        redirect($url);
-    }
-
-    public function flashMessageAndRedirect(string $messageType, string $message, string $url)
-    {
-        $this->session->set_flashdata($messageType, $message);
         redirect($url);
     }
 }
