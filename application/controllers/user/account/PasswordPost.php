@@ -44,9 +44,7 @@ class PasswordPost extends CI_Controller
         $userData = $this->users->updatePasswordUser($data);
 
         $this->session->set_userdata("userData", $userData[0]);
-        $this->session->set_flashdata("success", "<span><strong>Current Password</strong> changed!</span>");
-
-        redirect('/user/account/password?success=passwordChanged');
+        $this->flashMessageAndRedirect('success', '<span><strong>Current Password</strong> changed!</span>', '/user/account/password');
     }
 
     private function checkPasswordsIsEquals(array $data): bool
