@@ -34,57 +34,44 @@ class ProfilePost extends CI_Controller
         ];
         $data = $this->validateFields($data);
 
-        $userData = $this->users->updateUser($data);
+        if ($this->users->updateUser($data)) {
+            $userData = $this->users->getAllDatasById($data['id']);
+            $this->session->set_userdata("userData", $userData[0]);
+            $this->flashMessageAndRedirect('success', '<span>User updated!</span>', '/user/account/profile');
+        }
 
-        $this->session->set_userdata("userData", $userData[0]);
-
-        redirect('/user/account/profile');
+        $wrongValues = $this->users->checkFieldsToUpdate($data);
+        $this->flashMessageAndRedirectWithManyErrors('warning', $wrongValues, '/user/account/profile');
     }
 
-    public function validateFields(array $data)
+    public function validateFields(array $data): array
     {
-        $wrongValues = '';
+        $wrongValues = [];
 
         if (empty($data['name'])) {
-            $wrongValues = "name";
+            $wrongValues[] = "name";
         }
 
         if (!filter_var($data['email'], FILTER_VALIDATE_EMAIL)) {
-            if (empty($wrongValues)) {
-                $wrongValues = "email";
-            } else {
-                $wrongValues .= "&email";
-            }
+            $wrongValues[] = "email";
         }
 
         if ($this->validateCpf($data['cpf'])) {
-            $data['cpf'] = $this->validateCpf($data['cpf']);
+            $data['cpf'] = $this->formatCpf($data['cpf']);
         } else {
-            if (empty($wrongValues)) {
-                $wrongValues = "cpf";
-            } else {
-                $wrongValues .= "&cpf";
-            }
+            $wrongValues[] = "cpf";
         }
 
         if ($this->validatePhone($data['phone'])) {
-            $data['phone'] = $this->validatePhone($data['phone']);
+            $data['phone'] = $this->formatPhone($data['phone']);
         } else {
-            if (empty($wrongValues)) {
-                $wrongValues = "phone";
-            } else {
-                $wrongValues .= "&phone";
-            }
+            $wrongValues[] = "phone";
         }
 
         if ($this->validateBirthday($data['birthday'])) {
-            $data['birthday'] = $this->validateBirthday($data['birthday']);
+            $data['birthday'] = $this->formatBirthday($data['birthday']);
         } else {
-            if (empty($wrongValues)) {
-                $wrongValues = "birthday";
-            } else {
-                $wrongValues .= "&birthday";
-            }
+            $wrongValues[] = "birthday";
         }
 
         if ($data['gender'] == 1) {
@@ -105,44 +92,85 @@ class ProfilePost extends CI_Controller
             return $data;
         }
 
-        redirect('/user/account/profile?error=' . $wrongValues);
+        $this->flashMessageAndRedirectWithManyErrors('danger', $wrongValues, '/user/account/profile');
     }
 
-    public function validateCpf(string $cpf)
+    public function validateCpf(string $cpf): bool
     {
         if (strlen($cpf) === 14) {
-
-            $removingDots = str_replace(".", "", $cpf);
-            $formattedCpf = str_replace("-", "", $removingDots);
-
-            return $formattedCpf;
+            return true;
         }
 
         return false;
     }
 
-    public function validatePhone(string $phone)
+    private function formatCpf(string $cpf): string
+    {
+        $removingDots = str_replace(".", "", $cpf);
+        $formattedCpf = str_replace("-", "", $removingDots);
+
+        return $formattedCpf;
+    }
+
+    private function validatePhone(string $phone): bool
     {
         if (strlen($phone) == 14 || strlen($phone) == 15) {
-            $removingDash = str_replace("-", "", $phone);
-            $removingFirstParentesis = str_replace("(", "", $removingDash);
-            $phone = str_replace(") ", "-", $removingFirstParentesis);
-
-            return $phone;
+            return true;
         }
 
         return false;
     }
 
-    public function validateBirthday(string $date)
+    private function formatPhone(string $phone): string
+    {
+        $removingDash = str_replace("-", "", $phone);
+        $removingFirstParentesis = str_replace("(", "", $removingDash);
+        $phone = str_replace(") ", "-", $removingFirstParentesis);
+
+        return $phone;
+    }
+
+    private function validateBirthday(string $date): bool
     {
         if (strlen($date) === 10) {
-            $arrayDate = explode("/", $date);
-            $date = $arrayDate[2] . "-" . $arrayDate[1] . "-" . $arrayDate[0];
-
-            return $date;
+            return true;
         }
 
         return false;
+    }
+
+    private function formatBirthday(string $date)
+    {
+        $arrayDate = explode("/", $date);
+        $date = $arrayDate[2] . "-" . $arrayDate[1] . "-" . $arrayDate[0];
+
+        return $date;
+    }
+
+    public function flashMessageAndRedirectWithManyErrors(string $messageType, array $wrongValues, string $url)
+    {
+        $messages = [];
+
+        switch ($messageType) {
+            case 'danger':
+                foreach ($wrongValues as $field) {
+                    $messages[] = '<span><strong>' . ucfirst($field) . '</strong> is not valid!</span>';
+                }
+                break;
+            case 'warning':
+                foreach ($wrongValues as $field) {
+                    $messages[] = '<span><strong>' . ucfirst($field) . '</strong> is already been used by an user!</span>';
+                }
+                break;
+        }
+
+        $this->session->set_flashdata($messageType, $messages);
+        redirect($url);
+    }
+
+    public function flashMessageAndRedirect(string $messageType, string $message, string $url)
+    {
+        $this->session->set_flashdata($messageType, $message);
+        redirect($url);
     }
 }

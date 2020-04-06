@@ -18,32 +18,25 @@ class Users extends CI_Model
         $this->load->helper('session_helper');
     }
 
-    public function updateUser(array $data)
+    public function updateUser(array $data): bool
     {
         if (!isset($data['id'])) {
-            redirect('/guest/login?fieldExist=invalidLogin');
+            return false;
         }
 
-        $fieldsToCheck = [
-            'id' => $data['id'],
-            'email' => $data['email'],
-            'cpf' => $data['cpf']
-        ];
-
         $userExist = $this->db->from('users')
-            ->where($fieldsToCheck)
+            ->where('id', $data['id'])
+            ->or_where('email', $data['email'])
+            ->or_where('cpf', $data['cpf'])
             ->get()
             ->result();
 
-        if (!empty($userExist)) {
+        if (count($userExist) === 1) {
             $this->db->where('id', $data['id'])->update('users', $data);
-            var_dump($userExist);
-            return $userExist;
+            return true;
         }
 
-        // Function to errors to url
-        $this->checkFieldsToUpdate($data);
-        redirect('/guest/login');
+        return false;
     }
 
     public function updatePasswordUser(array $data)
@@ -64,10 +57,10 @@ class Users extends CI_Model
 
         // Function to errors to url
         $this->checkFieldsToUpdate($data);
-        redirect('/guest/login');
+        return false;
     }
 
-    protected function checkFieldsToUpdate($data)
+    public function checkFieldsToUpdate(array $data): array
     {
         $userExist = $this->db->from('users')
             ->where('email', $data['email'])
@@ -76,27 +69,31 @@ class Users extends CI_Model
             ->result_array();
 
         if (!empty($userExist)) {
-            $fieldExist = '';
+            $fieldExist = [];
 
-            if ($data['cpf'] == $userExist[0]['cpf']) {
-                $fieldExist = 'cpf';
-            }
+            foreach ($userExist as $user) {
+                if ($data['id'] === $user['id']) {
+                    continue;
+                }
 
-            if ($data['email'] == $userExist[0]['email']) {
-                if (empty($fieldExist)) {
-                    $fieldExist = 'email';
-                } else {
-                    $fieldExist .= "&email";
+                if ($data['cpf'] == $user['cpf']) {
+                    $fieldExist[$user['name']] = 'cpf';
+                }
+
+                if ($data['email'] == $user['email']) {
+                    $fieldExist[$user['name']] = 'email';
                 }
             }
         }
 
-        redirect('/user/profile?fieldExist=' . $fieldExist);
+        return $fieldExist;
     }
 
     public function createUser($data): bool
     {
-        $userExist = $this->db->from('users')->where('email', $data['email'])->or_where('cpf', $data['cpf']);
+        $userExist = $this->db->from('users')
+            ->where('email', $data['email'])
+            ->or_where('cpf', $data['cpf']);
 
         if (empty($userExist->get()->result())) {
             $this->db->insert('users', $data);
@@ -128,7 +125,11 @@ class Users extends CI_Model
 
     public function checkFieldsIsEquals(array $data): array
     {
-        $userExist = $this->db->from('users')->where('email', $data['email'])->or_where('cpf', $data['cpf'])->get()->result_array();
+        $userExist = $this->db->from('users')
+            ->where('email', $data['email'])
+            ->or_where('cpf', $data['cpf'])
+            ->get()
+            ->result_array();
 
         if (!empty($userExist)) {
             $fieldExist = [];
