@@ -3,8 +3,13 @@
         <h1>Profile Page</h1>
 
         <div class="row justify-content-center">
-            <!-- Menu to Profile Page  -->
-            <?php $this->load->view('user/account/account_menu'); ?>
+            <div class="col-md-3">
+                <!-- Menu to Profile Page  -->
+                <?php $this->load->view('user/account/account_menu'); ?>
+
+                <!-- Search -->
+                <?php $this->load->view('user/search/search_input'); ?>
+            </div>
 
             <!-- Page Profile -->
             <div class="col-md-9">

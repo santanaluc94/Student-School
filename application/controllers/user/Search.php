@@ -6,6 +6,7 @@ class Search extends CI_Controller
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('courses');
         $this->load->library('session');
         $this->load->helper('session_helper');
     }
@@ -13,7 +14,7 @@ class Search extends CI_Controller
     public function index(): void
     {
         if (hasSession()) {
-            $this->template->show('user/search');
+            $this->template->show('user/search/search');
         } else {
             $data = [
                 'scripts' => [
@@ -21,7 +22,17 @@ class Search extends CI_Controller
                     'login.js'
                 ]
             ];
-            $this->template->show("user/search.php", $data);
+            $this->template->show("user/search/search.php", $data);
         }
+    }
+
+    public function searchPost(): void
+    {
+        $search = $this->input->post('search');
+
+        $courses['result'] = $this->courses->getAllCourses($search);
+        $courses['search'] = $search;
+
+        $this->template->show("user/search/search.php", $courses);
     }
 }

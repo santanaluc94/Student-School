@@ -51,9 +51,6 @@
                             <a class="nav-link" href="<?= base_url('user/account/profile'); ?>">Profile</a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/search'); ?>">Search</a>
-                        </li>
-                        <li class="list-inline-item">
                             <a class="nav-link" href="<?= base_url('user/dashboard/logOut'); ?>">Log Out</a>
                         </li>
                     </ul>
