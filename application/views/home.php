@@ -2,14 +2,13 @@
      <div class="container py-lg-5">
          <h3 class="mb-1 mb-md-5 text-center">Loved by thousands of app developers like you</h3>
 
-
          <div id="flipster-carousel" class="flipster-carousel pt-md-3">
              <div class="flip-items pb-5">
                  <?php foreach ($courses as $course) : ?>
                      <div class="flip-item">
                          <div class="item-inner shadow-lg rounded">
                              <h5 class="mb-2"><?= $course['course'] ?></h5>
-                             <div class="mb-3"><?= $course['description'] ?>
+                             <div class="mb-3"><?= substr($course['description'], 0, 500) ?>...
                              </div>
                              <div class="source media ">
                                  <img class="source-profile rounded-circle mr-3" src="<?= base_url('public/images/courses/' . $course['course'] . 'jpg') ?>" alt="" />
@@ -23,8 +22,6 @@
                      </div>
                      <!--//flip-item-->
                  <?php endforeach; ?>
-
-
 
              </div>
              <!--//items-wrapper-->
