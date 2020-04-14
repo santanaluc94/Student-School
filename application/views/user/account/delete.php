@@ -1,12 +1,18 @@
 <main class="content">
     <div class="container">
         <h1>Profile Page</h1>
+
         <div class="row justify-content-center">
-            <!-- Menu to Profile Page  -->
-            <?php $this->load->view('user/account/account_menu'); ?>
+            <div class="col-md-3">
+                <!-- Menu to Profile Page  -->
+                <?php $this->load->view('user/account/account_menu'); ?>
+
+                <!-- Search -->
+                <?php $this->load->view('user/search/search_input'); ?>
+            </div>
 
             <!-- Delete Profile -->
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <div class="card">
                     <div class="card-header">Delete Account</div>
                     <div class="card-body">

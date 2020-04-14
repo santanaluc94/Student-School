@@ -18,4 +18,9 @@ class Courses extends CI_Model
     {
         return $this->db->from('courses')->get()->result_array();
     }
+
+    public function getAllCourses(string $courseName): array
+    {
+        return $this->db->query("SELECT * FROM courses WHERE UPPER(course) LIKE UPPER('%$courseName%')")->result_array();
+    }
 }
