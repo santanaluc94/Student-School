@@ -17,11 +17,11 @@
                                 <?php foreach ($result as $course) : ?>
                                     <div class="card-deck">
                                         <div class="card-md-4 _card" style="width: 18rem;">
-                                            <img class="card-img-top" src="<?= base_url('public/images/courses/Java.jpg') ?>" alt="Card image cap">
+                                            <img class="card-img-top" src="<?= base_url('public/images/courses/') . $course['url'] ?>" style="height: 200px; width: 200px;" />
                                             <div class="card-body">
                                                 <h5 class="card-title"><?= $course['course'] ?></h5>
                                                 <p class="card-text"><?= substr($course['description'], 0, 200) ?>...</p>
-                                                <a href="#" class="btn btn-primary">Page Course</a>
+                                                <a href="<?= base_url('/user/course/page/?id=') . $course['id'] ?>" class="btn btn-primary">Page Course</a>
                                             </div>
                                         </div>
                                     </div>
