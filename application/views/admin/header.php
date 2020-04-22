@@ -43,19 +43,25 @@
 
                     <ul class="social-list list-inline mb-0 position-absolute">
                         <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/dashboard'); ?>">Dashboard</a>
+                            <a class="nav-link" href="<?= base_url('admin/dashboard'); ?>">Dashboard</a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/my-courses'); ?>">My Courses</a>
+                            <a class="nav-link" href="<?= base_url('admin/account/profile'); ?>">Categories</a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/account/profile'); ?>">Profile</a>
+                            <a class="nav-link" href="<?= base_url('admin/teachers'); ?>">Teachers</a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/search'); ?>">Search</a>
+                            <a class="nav-link" href="<?= base_url('admin/courses'); ?>">Courses</a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/dashboard/logOut'); ?>">Log Out</a>
+                            <a class="nav-link" href="<?= base_url('admin/settings'); ?>">Settings</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="nav-link" href="<?= base_url('admin/profile'); ?>">Profile</a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a class="nav-link" href="<?= base_url('admin/dashboard/logOut'); ?>">Log Out</a>
                         </li>
                     </ul>
                     <!-- Menu -->
