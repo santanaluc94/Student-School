@@ -5,11 +5,11 @@
                 <div class="card">
                     <div class="card-header bg-dark text-white">Admin Login</div>
                     <div class="card-body">
-                        <form action="<?= base_url('guest/loginAdminPost/execute') ?>" method="post" id="login_form">
+                        <form action="<?= base_url('guest/adminLoginPost/execute') ?>" method="post" id="admin_login_form">
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                                <label for="nickname" class="col-md-4 col-form-label text-md-right">Nickname</label>
                                 <div class="col-md-6">
-                                    <input type="email" id="email" class="form-control" name="email" placeholder="example@email.com" required autofocus>
+                                    <input type="text" id="nickname" class="form-control" name="nickname" placeholder="Nickname" required autofocus>
                                 </div>
                             </div>
                             <div class="form-group row">
@@ -42,9 +42,9 @@
                                 </a>
                             </div>
                         </form>
-                        <?php if ($this->session->flashdata('secondary')) : ?>
-                            <div class="alert alert-secondary" style="margin-top: 15px;">
-                                <?= $this->session->flashdata('secondary'); ?>
+                        <?php if ($this->session->flashdata('danger')) : ?>
+                            <div class="alert alert-danger" style="margin-top: 15px;">
+                                <?= $this->session->flashdata('danger'); ?>
                             </div>
                         <?php endif; ?>
                     </div>
