@@ -1,5 +1,31 @@
+/* cabeçalho e menu */
+header.header {
+    background-color: #002447 ;
+    position: relative;
+}
+
+span.logo-text {
+    color: #feb249;
+}
+
+a.nav-link:link {
+    color:#53D3D1;
+    transition: 0.5s ease-in;
+}
+
+a.nav-link:hover {
+    color: #feb249;
+    transition: 0.5s ease-in;
+}
+
+div.menu {
+    position: absolute;
+    right: 0;
+}
+
 main {
     margin-bottom: 50px;
+    margin-top: 2%;
 }
 
 div .card-header {
