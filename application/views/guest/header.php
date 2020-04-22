@@ -45,6 +45,9 @@
                             <a class="nav-link" href="<?= base_url('guest/login'); ?>">Login</a>
                         </li>
                         <li class="list-inline-item">
+                            <a class="nav-link" href="<?= base_url('guest/adminLogin'); ?>">Admin</a>
+                        </li>
+                        <li class="list-inline-item">
                             <a class="nav-link" href="<?= base_url('guest/register'); ?>">Register</a>
                         </li>
                     </ul>
