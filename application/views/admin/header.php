@@ -1,4 +1,17 @@
-<!DOCTYPE html>
+<?php
+$userAllowedAdmin = [
+    'root',
+    'admin',
+    'teacher_admin'
+];
+
+$userAllowedTeachers = [
+    'root',
+    'teachers',
+    'teacher_admin'
+]
+
+?><!DOCTYPE html>
 <html lang="en">
 
 <head>
@@ -45,6 +58,7 @@
                         <li class="list-inline-item">
                             <a class="nav-link" href="<?= base_url('admin/dashboard'); ?>">Dashboard</a>
                         </li>
+                        <?php if (in_array($_SESSION['adminData']->user_type, $userAllowedAdmin)) : ?>
                         <li class="list-inline-item">
                             <a class="nav-link" href="<?= base_url('admin/account/profile'); ?>">Categories</a>
                         </li>
@@ -52,11 +66,14 @@
                             <a class="nav-link" href="<?= base_url('admin/teachers'); ?>">Teachers</a>
                         </li>
                         <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('admin/courses'); ?>">Courses</a>
-                        </li>
-                        <li class="list-inline-item">
                             <a class="nav-link" href="<?= base_url('admin/settings'); ?>">Settings</a>
                         </li>
+                        <?php endif; ?>
+                        <?php if (in_array($_SESSION['adminData']->user_type, $userAllowedTeachers)) : ?>
+                        <li class="list-inline-item">
+                            <a class="nav-link" href="<?= base_url('admin/courses'); ?>">Courses</a>
+                        </li>
+                        <?php endif; ?>
                         <li class="list-inline-item">
                             <a class="nav-link" href="<?= base_url('admin/profile'); ?>">Profile</a>
                         </li>
