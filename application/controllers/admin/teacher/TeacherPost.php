@@ -19,7 +19,7 @@ class TeacherPost extends CI_Controller
     public function index(): void
     {
         if (hasAdminSession()) {
-            redirect('admin/teacher/list');
+            redirect('admin/teacher/grid');
         } else {
             redirect('/guest/adminLogin');
         }
@@ -41,16 +41,20 @@ class TeacherPost extends CI_Controller
 
         $data = $this->validateFields($data);
 
-        if ($this->users->createUser($data)) {
-            $id = $this->db->insert_id();
-            $userData = $this->users->getAllDatasById($id);
-            $this->session->set_userdata("userData", $userData[0]);
+        if ($this->admins->canCreateUser($data)) {
+            // remove datas to insert only user datas
+            unset($data['id']);
+            unset($data['cpassword']);
+            unset($data['your_password']);
 
-            redirect('user/dashboard');
+            // create user
+            $this->admins->createUser($data);
+            $this->flashMessageAndRedirect('success', '<span>Teacher created!</span>', '/admin/teacher/grid');
         }
 
-        $wrongValues = $this->users->checkFieldsIsEquals($data);
-        $this->flashMessageAndRedirectWithManyErrors('warning', $wrongValues, '/guest/register');
+        $wrongValues = $this->admins->checkFieldsIsEquals($data);
+
+        $this->flashMessageAndRedirectWithManyErrors('warning', $wrongValues, '/admin/teacher/add');
     }
 
     public function validateFields(array $data)
@@ -93,7 +97,7 @@ class TeacherPost extends CI_Controller
         }
 
         if (!empty($wrongValues)) {
-            $this->flashMessageAndRedirectWithManyErrors('danger', $wrongValues, '/guest/register');
+            $this->flashMessageAndRedirectWithManyErrors('danger', $wrongValues, '/admin/teacher/add');
         }
 
         if (!empty($usedValues)) {
@@ -158,6 +162,12 @@ class TeacherPost extends CI_Controller
         }
 
         $this->session->set_flashdata($messageType, $messages);
+        redirect($url);
+    }
+
+    public function flashMessageAndRedirect(string $messageType, string $message, string $url)
+    {
+        $this->session->set_flashdata($messageType, $message);
         redirect($url);
     }
 }

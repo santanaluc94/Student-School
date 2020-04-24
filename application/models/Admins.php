@@ -161,4 +161,53 @@ class Admins extends CI_Model
 
         return $value[$column];
     }
+
+    public function canCreateUser($data): bool
+    {
+        $usersExist = $this->db->from('admins')
+            ->where('nickname', $data['nickname'])
+            ->or_where('email', $data['email'])
+            ->or_where('cpf', $data['cpf'])
+            ->get()->result_array();
+
+        if (empty($usersExist)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function createUser($data): void
+    {
+        $this->db->insert('admins', $data);
+    }
+
+    public function checkFieldsIsEquals(array $data): array
+    {
+        $usersExist = $this->db->from('admins')
+            ->where('nickname', $data['nickname'])
+            ->or_where('email', $data['email'])
+            ->or_where('cpf', $data['cpf'])
+            ->get()->result_array();
+
+        $fieldExist = [];
+
+        if (!empty($usersExist)) {
+            foreach ($usersExist as $user) {
+                if ($data['cpf'] == $user['cpf']) {
+                    $fieldExist[$user['name']] = 'cpf';
+                }
+
+                if ($data['email'] == $user['email']) {
+                    $fieldExist[$user['name']] = 'email';
+                }
+
+                if ($data['nickname'] == $user['nickname']) {
+                    $fieldExist[$user['name']] = 'nickname';
+                }
+            }
+        }
+
+        return $fieldExist;
+    }
 }

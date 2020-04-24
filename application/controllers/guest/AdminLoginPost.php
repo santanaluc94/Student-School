@@ -24,7 +24,7 @@ class AdminLoginPost extends CI_Controller
     {
         $data = [
             'nickname' => $this->input->post('nickname'),
-            'password' => $this->input->post('password')
+            'password' => md5($this->input->post('password'))
         ];
 
         $adminData = $this->admins->userLogin($data);
