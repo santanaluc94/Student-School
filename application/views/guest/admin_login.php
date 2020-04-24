@@ -33,13 +33,6 @@
                                         Login
                                     </button>
                                 </div>
-                                <br />
-                                <div>
-                                    <span class="help-block"></span>
-                                </div>
-                                <a href="<?= base_url('guest/forgotpassword'); ?>" class="btn btn-link text-dark">
-                                    Forgot Your Password?
-                                </a>
                             </div>
                         </form>
                         <?php if ($this->session->flashdata('danger')) : ?>
