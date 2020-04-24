@@ -1,3 +1,17 @@
+<?php
+$userAllowedAdmin = [
+    'root',
+    'admin',
+    'teacher_admin'
+];
+
+$userAllowedTeachers = [
+    'root',
+    'teachers',
+    'teacher_admin'
+]
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -31,7 +45,7 @@
 <body>
     <header class="header">
         <div class="branding">
-            <div class="container position-relative">
+            <div class="container">
                 <nav class="navbar navbar-expand-lg">
                     <h1 class="site-logo">
                         <a class="navbar-brand" href="<?= base_url('') ?>">
@@ -41,23 +55,41 @@
                         </a>
                     </h1>
 
-                    <ul class="social-list list-inline mb-0 position-absolute">
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/dashboard'); ?>">Dashboard</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/my-courses'); ?>">My Courses</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/account/profile'); ?>">Profile</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/search'); ?>">Search</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/dashboard/logOut'); ?>">Log Out</a>
-                        </li>
-                    </ul>
+                    <div class="menu">
+                        <ul class="social-list list-inline mb-0">
+                            <li class="list-inline-item">
+                                <a class="nav-link" href="<?= base_url('admin/dashboard'); ?>">Dashboard</a>
+                            </li>
+                            <?php if (in_array($_SESSION['adminData']->user_type, $userAllowedAdmin)) : ?>
+                                <li class="list-inline-item">
+                                    <a class="nav-link" href="<?= base_url('admin/account/profile'); ?>">Categories</a>
+                                </li>
+
+                                <li class="list-inline-item dropdown drop-menu">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Teacher</a>
+                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item" href="<?= base_url('admin/teacher/list'); ?>">All Teachers</a>
+                                        <a class="dropdown-item" href="<?= base_url('admin/teacher/add'); ?>">Add Teachers</a>
+                                    </div>
+                                </li>
+
+                                <li class="list-inline-item">
+                                    <a class="nav-link" href="<?= base_url('admin/settings'); ?>">Settings</a>
+                                </li>
+                            <?php endif; ?>
+                            <?php if (in_array($_SESSION['adminData']->user_type, $userAllowedTeachers)) : ?>
+                                <li class="list-inline-item">
+                                    <a class="nav-link" href="<?= base_url('admin/courses'); ?>">Courses</a>
+                                </li>
+                            <?php endif; ?>
+                            <li class="list-inline-item">
+                                <a class="nav-link" href="<?= base_url('admin/profile'); ?>">Profile</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="nav-link" href="<?= base_url('admin/dashboard/logOut'); ?>">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
                     <!-- Menu -->
                 </nav>
             </div>

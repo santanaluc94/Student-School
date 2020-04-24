@@ -6,9 +6,21 @@ header.header {
 
 span.logo-text {
     color: #feb249;
+
+}
+
+nav.nav-menu-admin {
+}
+a.nav-link {
+    font-size: 16px;
 }
 
 a.nav-link:link {
+    color:#53D3D1;
+    transition: 0.5s ease-in;
+}
+
+a.nav-link:visited {
     color:#53D3D1;
     transition: 0.5s ease-in;
 }
@@ -18,9 +30,23 @@ a.nav-link:hover {
     transition: 0.5s ease-in;
 }
 
+li.drop-menu {
+    color:#53D3D1;
+    transition: 0.5s ease-in;
+}
+
+li.drop-menu:hover {
+    color: #feb249;
+    transition: 0.5s ease-in;
+}
+
+
 div.menu {
     position: absolute;
     right: 0;
+    margin: auto;
+    width: 70%;
+
 }
 
 main {
