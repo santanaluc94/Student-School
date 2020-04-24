@@ -11,10 +11,10 @@
                              <div class="mb-3"><?= substr($course['description'], 0, 500) ?>...
                              </div>
                              <div class="source media ">
-                                 <img class="source-profile rounded-circle mr-3" src="<?= base_url('public/images/courses/' . $course['course'] . 'jpg') ?>" alt="" />
+                                 <img class="source-profile rounded-circle mr-3" src="<?= base_url('public/images/courses/') . $course['url'] ?>" alt="" />
                                  <div class="source-info media-body pt-3">
                                      <div><?= $course['workload'] ?> hours</div>
-                                     <div>R$<?= $course['price'] ?>,00</div>
+                                     <div><?= $this->CI->formatPrice($course['price']) ?></div>
                                  </div>
                              </div>
                          </div>
