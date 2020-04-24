@@ -29,17 +29,7 @@ class PasswordPost extends CI_Controller
             'confirmNewPassword' => md5($this->input->post('confirmNewPassword'))
         ];
 
-        if (!$this->checkPasswordsIsEquals($data)) {
-            $this->flashMessageAndRedirect('danger', '<span><strong>New Password</strong> and <strong>Confirm New Password</strong> must be equals!</span>', '/user/account/password');
-        }
-
-        if (!$this->checkCurrentPassword($data['currentPassword'], $data['id'])) {
-            $this->flashMessageAndRedirect('danger', '<span><strong>Current Password</strong> is wrong!</span>', '/user/account/password');
-        }
-
-        if ($this->checkCurrentPasswordisEqualsToNewPassword($data)) {
-            $this->flashMessageAndRedirect('danger', '<span><strong>Current Password</strong> must be different from <strong>New Password</strong>!</span>', '/user/account/password');
-        }
+        $this->validatePassword($data['newPassword'], $data['confirmNewPassword'], $data['currentPassword'], $data['id']);
 
         $userData = $this->users->updatePasswordUser($data);
 
@@ -47,9 +37,24 @@ class PasswordPost extends CI_Controller
         $this->flashMessageAndRedirect('success', '<span><strong>Current Password</strong> changed!</span>', '/user/account/password');
     }
 
-    private function checkPasswordsIsEquals(array $data): bool
+    public function validatePassword(string $newPassword, string $confirmNewPassword, string $currentPassword, $id): void
     {
-        if ($data['newPassword'] === $data['confirmNewPassword']) {
+        if (!$this->checkPasswordsIsEquals($newPassword, $confirmNewPassword)) {
+            $this->flashMessageAndRedirect('danger', '<span><strong>New Password</strong> and <strong>Confirm New Password</strong> must be equals!</span>', '/user/account/password');
+        }
+
+        if (!$this->checkCurrentPassword($currentPassword, $id)) {
+            $this->flashMessageAndRedirect('danger', '<span><strong>Current Password</strong> is wrong!</span>', '/user/account/password');
+        }
+
+        if ($this->checkCurrentPasswordIsEqualsToNewPassword($newPassword, $currentPassword)) {
+            $this->flashMessageAndRedirect('danger', '<span><strong>Current Password</strong> must be different from <strong>New Password</strong>!</span>', '/user/account/password');
+        }
+    }
+
+    private function checkPasswordsIsEquals(string $newPassword, string $confirmNewPassword): bool
+    {
+        if ($newPassword === $confirmNewPassword) {
             return true;
         }
 
@@ -67,16 +72,16 @@ class PasswordPost extends CI_Controller
         return false;
     }
 
-    private function checkCurrentPasswordisEqualsToNewPassword(array $data): bool
+    private function checkCurrentPasswordIsEqualsToNewPassword(string $newPassword, string $currentPassword): bool
     {
-        if ($data['currentPassword'] === $data['newPassword']) {
+        if ($currentPassword === $newPassword) {
             return true;
         }
 
         return false;
     }
 
-    public function flashMessageAndRedirect(string $messageType, string $message, string $url)
+    public function flashMessageAndRedirect(string $messageType, string $message, string $url): void
     {
         $this->session->set_flashdata($messageType, $message);
         redirect($url);

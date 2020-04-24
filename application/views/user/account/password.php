@@ -30,6 +30,7 @@
                                     <input type="password" id="currentPassword" class="form-control" name="currentPassword" required />
                                 </div>
                             </div>
+                            <hr />
                             <div class="form-group row">
                                 <label for="newPassword" class="col-md-4 col-form-label text-md-right">New Password</label>
                                 <div class="col-md-6">

@@ -27,7 +27,6 @@ class TeacherPost extends CI_Controller
 
     public function execute(): void
     {
-        echo '<pre>';
         $data = [
             'name' => $this->input->post('name'),
             'nickname' => $this->input->post('nickname'),
@@ -36,7 +35,8 @@ class TeacherPost extends CI_Controller
             'password' => $this->input->post('password'),
             'cpassword' => $this->input->post('cpassword'),
             'your_password' => $this->input->post('your_password'),
-            'user_type' => self::USER_TYPE
+            'user_type' => self::USER_TYPE,
+            'id' => (int) $_SESSION['adminData']->id
         ];
 
         $data = $this->validateFields($data);
@@ -74,16 +74,22 @@ class TeacherPost extends CI_Controller
             $usedValues[] = 'email';
         }
 
-        if ($this->validateCpf($data['cpf'])) {
-            $data['cpf'] = $this->formatCpf($data['cpf']);
-        } else {
+        if (!$this->validateCpf($data['cpf'])) {
             $wrongValues[] = 'cpf';
+        } elseif ($this->admins->isDataUsed($data['cpf'], 'cpf')) {
+            $usedValues[] = 'cpf';
+        } else {
+            $data['cpf'] = $this->formatCpf($data['cpf']);
         }
 
-        if ($this->validatePassword($data['password'])) {
+        if ($this->validatePassword($data['password'], $data['cpassword'])) {
             $data['password'] = md5($data['password']);
         } else {
             $wrongValues[] = "password";
+        }
+
+        if (!$this->validatePasswordAdmin($data['your_password'], $data['id'])) {
+            $wrongValues[] = 'Your Password';
         }
 
         if (!empty($wrongValues)) {
@@ -97,7 +103,7 @@ class TeacherPost extends CI_Controller
         return $data;
     }
 
-    public function validateCpf(string $cpf): bool
+    private function validateCpf(string $cpf): bool
     {
         if (strlen($cpf) === 14) {
             return true;
@@ -114,18 +120,27 @@ class TeacherPost extends CI_Controller
         return $formattedCpf;
     }
 
-    public function validatePassword(string $password): bool
+    private function validatePassword(string $password, string $confirmPassword): bool
     {
-        $cpassword = $this->input->post('cpassword');
-
-        if ($password === $cpassword) {
+        if ($password === $confirmPassword) {
             return true;
         }
 
         return false;
     }
 
-    public function flashMessageAndRedirectWithManyErrors(string $messageType, array $wrongValues, string $url)
+    private function validatePasswordAdmin(string $password, int $id): bool
+    {
+        $passwordAdmin = $this->admins->getDataById($id, 'password');
+
+        if ($password === $passwordAdmin) {
+            return true;
+        }
+
+        return false;
+    }
+
+    private function flashMessageAndRedirectWithManyErrors(string $messageType, array $wrongValues, string $url)
     {
         $messages = [];
 

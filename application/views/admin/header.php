@@ -67,8 +67,8 @@ $userAllowedTeachers = [
                             <li class="list-inline-item dropdown">
                                 <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">Teacher</a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="<?= base_url('admin/teacher/list'); ?>">All Teachers</a>
                                     <a class="dropdown-item" href="<?= base_url('admin/teacher/add'); ?>">Add Teachers</a>
+                                    <a class="dropdown-item" href="<?= base_url('admin/teacher/list'); ?>">All Teachers</a>
                                 </div>
                             </li>
 

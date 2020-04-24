@@ -135,22 +135,30 @@ class Admins extends CI_Model
         return [];
     }
 
-    public function getAllDatasByColumn(string $field, string $collumn): array
+    public function getAllDatasByColumn(string $field, string $column): array
     {
         $value = [];
-        $value = $this->db->select($collumn)->from('admins')->where($collumn, $field)->get()->result_array();
+        $value = $this->db->select($column)->from('admins')->where($column, $field)->get()->result_array();
 
         return $value[0];
     }
 
-    public function isDataUsed(string $field, string $collumn): bool
+    public function isDataUsed(string $field, string $column): bool
     {
-        $value = $this->db->select($collumn)->from('admins')->where($collumn, $field)->get()->row_array();
+        $value = $this->db->select($column)->from('admins')->where($column, $field)->get()->row_array();
 
         if (!empty($value)) {
             return true;
         }
 
         return false;
+    }
+
+    public function getDataById(int $id, string $column): string
+    {
+        $value = [];
+        $value = $this->db->select($column)->from('admins')->where('id', $id)->get()->row_array();
+
+        return $value[$column];
     }
 }
