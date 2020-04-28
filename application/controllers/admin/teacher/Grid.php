@@ -24,6 +24,7 @@ class Grid extends Settings
                 $this->flashMessageAndRedirect('danger', '<span>You do not have permissions to enter in this page!</span>', '/admin/dashboard');
             }
 
+            $this->template->show("admin/teacher/grid.php", $data);
         } else {
             redirect('/guest/adminLogin');
         }
