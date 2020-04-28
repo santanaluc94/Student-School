@@ -38,12 +38,13 @@ $userAllowedTeachers = [
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/theme.css'); ?>">
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/styles.css'); ?>">
+    <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/header_admin.css'); ?>">
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/boleto/boleto_styles.css'); ?>">
 
 </head>
 
 <body>
-    <header class="header">
+    <header class="header-admin">
         <div class="branding">
             <div class="container">
                 <nav class="navbar navbar-expand-lg">
@@ -55,7 +56,7 @@ $userAllowedTeachers = [
                         </a>
                     </h1>
 
-                    <div class="menu">
+                    <div class="menu-admin">
                         <ul class="social-list list-inline mb-0">
                             <li class="list-inline-item">
                                 <a class="nav-link" href="<?= base_url('admin/dashboard'); ?>">Dashboard</a>
@@ -67,9 +68,9 @@ $userAllowedTeachers = [
 
                                 <li class="list-inline-item dropdown drop-menu">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Teacher</a>
-                                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item" href="<?= base_url('admin/teacher/list'); ?>">All Teachers</a>
-                                        <a class="dropdown-item" href="<?= base_url('admin/teacher/add'); ?>">Add Teachers</a>
+                                    <div class="dropdown-menu box-dropdown-admin" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item line-dropdown-admin" href="<?= base_url('admin/teacher/list'); ?>">All Teachers</a>
+                                        <a class="dropdown-item line-dropdown-admin" href="<?= base_url('admin/teacher/add'); ?>">Add Teachers</a>
                                     </div>
                                 </li>
 
