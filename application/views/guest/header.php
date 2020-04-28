@@ -30,7 +30,7 @@
 <body>
     <header class="header">
         <div class="branding">
-            <div class="container position-relative">
+            <div class="container">
                 <nav class="navbar navbar-expand-lg">
                     <h1 class="site-logo">
                         <a class="navbar-brand" href="<?= base_url('') ?>">
@@ -39,18 +39,19 @@
                             <span class="logo-text">Student School</span>
                         </a>
                     </h1>
-
-                    <ul class="social-list list-inline mb-0 position-absolute">
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('guest/login'); ?>">Login</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('guest/adminLogin'); ?>">Admin</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('guest/register'); ?>">Register</a>
-                        </li>
-                    </ul>
+                    <div class="menu">
+                        <ul class="social-list list-inline mb-0">
+                            <li class="list-inline-item">
+                                <a class="nav-link" href="<?= base_url('guest/login'); ?>">Login</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="nav-link" href="<?= base_url('guest/adminLogin'); ?>">Admin</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="nav-link" href="<?= base_url('guest/register'); ?>">Register</a>
+                            </li>
+                        </ul>
+                    </div>
                     <!-- Menu -->
                 </nav>
             </div>

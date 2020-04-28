@@ -30,7 +30,7 @@
 <body>
     <header class="header">
         <div class="branding">
-            <div class="container position-relative">
+            <div class="container">
                 <nav class="navbar navbar-expand-lg">
                     <h1 class="site-logo">
                         <a class="navbar-brand" href="<?= base_url('') ?>">
@@ -40,20 +40,22 @@
                         </a>
                     </h1>
 
-                    <ul class="social-list list-inline mb-0 position-absolute">
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/dashboard'); ?>">Dashboard</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/my-courses'); ?>">My Courses</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/account/profile'); ?>">Profile</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('user/dashboard/logOut'); ?>">Log Out</a>
-                        </li>
-                    </ul>
+                    <div class="menu">
+                        <ul class="social-list list-inline mb-0">
+                            <li class="list-inline-item">
+                                <a class="nav-link" href="<?= base_url('user/dashboard'); ?>">Dashboard</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="nav-link" href="<?= base_url('user/my-courses'); ?>">My Courses</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="nav-link" href="<?= base_url('user/account/profile'); ?>">Profile</a>
+                            </li>
+                            <li class="list-inline-item">
+                                <a class="nav-link" href="<?= base_url('user/dashboard/logOut'); ?>">Log Out</a>
+                            </li>
+                        </ul>
+                    </div>
                     <!-- Menu -->
                 </nav>
             </div>
