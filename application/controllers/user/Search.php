@@ -30,7 +30,7 @@ class Search extends CI_Controller
     {
         $search = $this->input->post('search');
 
-        $courses['result'] = $this->courses->getAllCourses($search);
+        $courses['result'] = $this->courses->getAllCoursesByName($search);
         $courses['search'] = $search;
 
         $this->template->show("user/search/search.php", $courses);
