@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class LoginPost extends CI_Controller
+require_once (APPPATH . 'controllers/Settings.php');
+
+class LoginPost extends Settings
 {
     public function __construct()
     {
@@ -49,11 +51,5 @@ class LoginPost extends CI_Controller
         }
 
         return false;
-    }
-
-    public function flashMessageAndRedirect(string $messageType, string $message, string $url)
-    {
-        $this->session->set_flashdata($messageType, $message);
-        redirect($url);
     }
 }

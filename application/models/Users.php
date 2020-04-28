@@ -2,13 +2,60 @@
 
 class Users extends CI_Model
 {
+    /**
+     * Id User
+     *
+     * @var int
+     */
     private $id;
+
+    /**
+     * User Name
+     *
+     * @var string
+     */
     private $name;
+
+    /**
+     * User Email
+     *
+     * @var string
+     */
     private $email;
+
+    /**
+     * User CPF
+     *
+     * @var string
+     */
     private $cpf;
+
+    /**
+     * User Password
+     *
+     * @var string
+     */
     private $phone;
+
+    /**
+     * User Password
+     *
+     * @var string
+     */
     private $birthday;
+
+    /**
+     * User Password
+     *
+     * @var string
+     */
     private $gender;
+
+    /**
+     * Administrator Password
+     *
+     * @var string
+     */
     private $password;
 
     public function __construct()
@@ -16,6 +63,94 @@ class Users extends CI_Model
         parent::__construct();
         $this->load->database();
         $this->load->helper('session_helper');
+    }
+
+    public function setId(int $id): self
+    {
+        $this->id = $id;
+        return $this;
+    }
+
+    public function setName(string $name): self
+    {
+        $this->name = $name;
+        return $this;
+    }
+
+    public function setEmail(string $email): self
+    {
+        $this->email = $email;
+        return $this;
+    }
+
+    public function setCpf(string $cpf): self
+    {
+        $this->cpf = $cpf;
+        return $this;
+    }
+
+    public function setPhone(string $phone): self
+    {
+        $this->phone = $phone;
+        return $this;
+    }
+
+    public function setBirthday(string $birthday): self
+    {
+        $this->birthday = $birthday;
+        return $this;
+    }
+
+    public function setGender(string $gender): self
+    {
+        $this->gender = $gender;
+        return $this;
+    }
+
+    public function setPassword(string $password): self
+    {
+        $this->password = $password;
+        return $this;
+    }
+
+    public function getId(): int
+    {
+        return $this->id;
+    }
+
+    public function getName(): string
+    {
+        return $this->name;
+    }
+
+    public function getEmail(): string
+    {
+        return $this->email;
+    }
+
+    public function getCpf(): string
+    {
+        return $this->cpf;
+    }
+
+    public function getPhone(): string
+    {
+        return $this->phone;
+    }
+
+    public function getBirthday(): string
+    {
+        return $this->birthday;
+    }
+
+    public function getGender(): string
+    {
+        return $this->gender;
+    }
+
+    public function getPassword(): string
+    {
+        return $this->password;
     }
 
     public function updateUser(array $data): bool
@@ -175,93 +310,5 @@ class Users extends CI_Model
     {
         $userData = $this->db->from('users')->where('id', $id)->get()->result();
         return $userData;
-    }
-
-    public function setId(string $id): self
-    {
-        $this->id = $id;
-        return $this;
-    }
-
-    public function setName(string $name): self
-    {
-        $this->name = $name;
-        return $this;
-    }
-
-    public function setEmail(string $email): self
-    {
-        $this->email = $email;
-        return $this;
-    }
-
-    public function setCpf(string $cpf): self
-    {
-        $this->cpf = $cpf;
-        return $this;
-    }
-
-    public function setPhone(string $phone): self
-    {
-        $this->phone = $phone;
-        return $this;
-    }
-
-    public function setBirthday(string $birthday): self
-    {
-        $this->birthday = $birthday;
-        return $this;
-    }
-
-    public function setGender(string $gender): self
-    {
-        $this->gender = $gender;
-        return $this;
-    }
-
-    public function setPassword(string $password): self
-    {
-        $this->password = $password;
-        return $this;
-    }
-
-    public function getId(): int
-    {
-        return $this->id;
-    }
-
-    public function getName(): string
-    {
-        return $this->name;
-    }
-
-    public function getEmail(): string
-    {
-        return $this->email;
-    }
-
-    public function getCpf(): string
-    {
-        return $this->cpf;
-    }
-
-    public function getPhone(): string
-    {
-        return $this->phone;
-    }
-
-    public function getBirthday(): string
-    {
-        return $this->birthday;
-    }
-
-    public function getGender(): string
-    {
-        return $this->gender;
-    }
-
-    public function getPassword(): string
-    {
-        return $this->password;
     }
 }

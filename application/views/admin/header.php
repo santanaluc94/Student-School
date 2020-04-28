@@ -65,15 +65,13 @@ $userAllowedTeachers = [
                                 <li class="list-inline-item">
                                     <a class="nav-link" href="<?= base_url('admin/account/profile'); ?>">Categories</a>
                                 </li>
-
                                 <li class="list-inline-item dropdown drop-menu">
                                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Teacher</a>
                                     <div class="dropdown-menu box-dropdown-admin" aria-labelledby="navbarDropdown">
-                                        <a class="dropdown-item line-dropdown-admin" href="<?= base_url('admin/teacher/list'); ?>">All Teachers</a>
+                                        <a class="dropdown-item line-dropdown-admin" href="<?= base_url('admin/teacher/grid'); ?>">All Teachers</a>
                                         <a class="dropdown-item line-dropdown-admin" href="<?= base_url('admin/teacher/add'); ?>">Add Teachers</a>
                                     </div>
                                 </li>
-
                                 <li class="list-inline-item">
                                     <a class="nav-link" href="<?= base_url('admin/settings'); ?>">Settings</a>
                                 </li>

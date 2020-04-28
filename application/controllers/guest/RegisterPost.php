@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class RegisterPost extends CI_Controller
+require_once (APPPATH . 'controllers/Settings.php');
+
+class RegisterPost extends Settings
 {
     public function __construct()
     {
@@ -161,26 +163,5 @@ class RegisterPost extends CI_Controller
         }
 
         return false;
-    }
-
-    public function flashMessageAndRedirectWithManyErrors(string $messageType, array $wrongValues, string $url)
-    {
-        $messages = [];
-
-        switch ($messageType) {
-            case 'danger':
-                foreach ($wrongValues as $field) {
-                    $messages[] = '<span><strong>' . ucfirst($field) . '</strong> is not valid!</span>';
-                }
-                break;
-            case 'warning':
-                foreach ($wrongValues as $field) {
-                    $messages[] = '<span><strong>' . ucfirst($field) . '</strong> is already been used by an user!</span>';
-                }
-                break;
-        }
-
-        $this->session->set_flashdata($messageType, $messages);
-        redirect($url);
     }
 }

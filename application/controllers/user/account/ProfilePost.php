@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class ProfilePost extends CI_Controller
+require_once (APPPATH . 'controllers/Settings.php');
+
+class ProfilePost extends Settings
 {
     public function __construct()
     {
@@ -145,32 +147,5 @@ class ProfilePost extends CI_Controller
         $date = $arrayDate[2] . "-" . $arrayDate[1] . "-" . $arrayDate[0];
 
         return $date;
-    }
-
-    public function flashMessageAndRedirectWithManyErrors(string $messageType, array $wrongValues, string $url)
-    {
-        $messages = [];
-
-        switch ($messageType) {
-            case 'danger':
-                foreach ($wrongValues as $field) {
-                    $messages[] = '<span><strong>' . ucfirst($field) . '</strong> is not valid!</span>';
-                }
-                break;
-            case 'warning':
-                foreach ($wrongValues as $field) {
-                    $messages[] = '<span><strong>' . ucfirst($field) . '</strong> is already been used by an user!</span>';
-                }
-                break;
-        }
-
-        $this->session->set_flashdata($messageType, $messages);
-        redirect($url);
-    }
-
-    public function flashMessageAndRedirect(string $messageType, string $message, string $url)
-    {
-        $this->session->set_flashdata($messageType, $message);
-        redirect($url);
     }
 }

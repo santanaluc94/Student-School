@@ -7,7 +7,7 @@
                 <div class="card">
                     <div class="card-header bg-dark text-white">Add New Teacher</div>
                     <div class="card-body">
-                        <form action="<?= base_url('admin/teacher/teacherPost') ?>" method="post">
+                        <form action="<?= base_url('admin/teacher/teacherPost/execute') ?>" method="post">
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
                                 <div class="col-md-6">
@@ -77,3 +77,8 @@
         </div>
     </div>
 </main>
+<script type="text/javascript">
+    window.onload = function() {
+        $('#cpf').mask('000.000.000-00');
+    };
+</script>

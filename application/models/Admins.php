@@ -134,4 +134,80 @@ class Admins extends CI_Model
 
         return [];
     }
+
+    public function getAllDatasByColumn(string $field, string $column): array
+    {
+        $value = [];
+        $value = $this->db->select($column)->from('admins')->where($column, $field)->get()->result_array();
+
+        return $value[0];
+    }
+
+    public function isDataUsed(string $field, string $column): bool
+    {
+        $value = $this->db->select($column)->from('admins')->where($column, $field)->get()->row_array();
+
+        if (!empty($value)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function getDataById(int $id, string $column): string
+    {
+        $value = [];
+        $value = $this->db->select($column)->from('admins')->where('id', $id)->get()->row_array();
+
+        return $value[$column];
+    }
+
+    public function canCreateUser($data): bool
+    {
+        $usersExist = $this->db->from('admins')
+            ->where('nickname', $data['nickname'])
+            ->or_where('email', $data['email'])
+            ->or_where('cpf', $data['cpf'])
+            ->get()->result_array();
+
+        if (empty($usersExist)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function createUser($data): void
+    {
+        $this->db->insert('admins', $data);
+    }
+
+    public function checkFieldsIsEquals(array $data): array
+    {
+        $usersExist = $this->db->from('admins')
+            ->where('nickname', $data['nickname'])
+            ->or_where('email', $data['email'])
+            ->or_where('cpf', $data['cpf'])
+            ->get()->result_array();
+
+        $fieldExist = [];
+
+        if (!empty($usersExist)) {
+            foreach ($usersExist as $user) {
+                if ($data['cpf'] == $user['cpf']) {
+                    $fieldExist[$user['name']] = 'cpf';
+                }
+
+                if ($data['email'] == $user['email']) {
+                    $fieldExist[$user['name']] = 'email';
+                }
+
+                if ($data['nickname'] == $user['nickname']) {
+                    $fieldExist[$user['name']] = 'nickname';
+                }
+            }
+        }
+
+        return $fieldExist;
+    }
 }
