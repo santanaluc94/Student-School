@@ -1,16 +1,13 @@
 /* cabeçalho e menu */
-header.header {
+header.header-guest {
     background-color: #002447 ;
     position: relative;
 }
 
 span.logo-text {
     color: #feb249;
-
 }
 
-nav.nav-menu-admin {
-}
 a.nav-link {
     font-size: 16px;
 }
@@ -30,38 +27,11 @@ a.nav-link:hover {
     transition: 0.5s ease-in;
 }
 
-li.drop-menu {
-    color:#53D3D1;
-    transition: 0.5s ease-in;
-}
-
-li.drop-menu:hover {
-    color: #feb249;
-    transition: 0.5s ease-in;
-}
-
-
-div.menu {
+div.menu-guest {
     position: absolute;
     right: 0;
     margin: auto;
-    width: 70%;
-
 }
 
-main {
-    margin-bottom: 50px;
-    margin-top: 2%;
-}
 
-div .card-header {
-    font-size: 18px;
-}
 
-section.secao {
-    margin: 30px auto;
-}
-
-._card {
-    margin: 10px auto;
-}

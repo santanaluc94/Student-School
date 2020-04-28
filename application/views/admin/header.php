@@ -38,14 +38,15 @@ $userAllowedTeachers = [
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/theme.css'); ?>">
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/styles.css'); ?>">
+    <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/header_admin.css'); ?>">
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/boleto/boleto_styles.css'); ?>">
 
 </head>
 
 <body>
-    <header class="header">
+    <header class="header-admin">
         <div class="branding">
-            <div class="container position-relative">
+            <div class="container">
                 <nav class="navbar navbar-expand-lg">
                     <h1 class="site-logo">
                         <a class="navbar-brand" href="<?= base_url('') ?>">
@@ -55,39 +56,39 @@ $userAllowedTeachers = [
                         </a>
                     </h1>
 
-                    <ul class="social-list list-inline mb-0 position-absolute">
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('admin/dashboard'); ?>">Dashboard</a>
-                        </li>
-                        <?php if (in_array($_SESSION['adminData']->user_type, $userAllowedAdmin)) : ?>
+                    <div class="menu-admin">
+                        <ul class="social-list list-inline mb-0">
                             <li class="list-inline-item">
-                                <a class="nav-link" href="<?= base_url('admin/account/profile'); ?>">Categories</a>
+                                <a class="nav-link" href="<?= base_url('admin/dashboard'); ?>">Dashboard</a>
                             </li>
-
-                            <li class="list-inline-item dropdown">
-                                <a class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown">Teacher</a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="<?= base_url('admin/teacher/add'); ?>">Add Teachers</a>
-                                    <a class="dropdown-item" href="<?= base_url('admin/teacher/grid'); ?>">All Teachers</a>
-                                </div>
-                            </li>
-
+                            <?php if (in_array($_SESSION['adminData']->user_type, $userAllowedAdmin)) : ?>
+                                <li class="list-inline-item">
+                                    <a class="nav-link" href="<?= base_url('admin/account/profile'); ?>">Categories</a>
+                                </li>
+                                <li class="list-inline-item dropdown drop-menu">
+                                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown">Teacher</a>
+                                    <div class="dropdown-menu box-dropdown-admin" aria-labelledby="navbarDropdown">
+                                        <a class="dropdown-item line-dropdown-admin" href="<?= base_url('admin/teacher/grid'); ?>">All Teachers</a>
+                                        <a class="dropdown-item line-dropdown-admin" href="<?= base_url('admin/teacher/add'); ?>">Add Teachers</a>
+                                    </div>
+                                </li>
+                                <li class="list-inline-item">
+                                    <a class="nav-link" href="<?= base_url('admin/settings'); ?>">Settings</a>
+                                </li>
+                            <?php endif; ?>
+                            <?php if (in_array($_SESSION['adminData']->user_type, $userAllowedTeachers)) : ?>
+                                <li class="list-inline-item">
+                                    <a class="nav-link" href="<?= base_url('admin/courses'); ?>">Courses</a>
+                                </li>
+                            <?php endif; ?>
                             <li class="list-inline-item">
-                                <a class="nav-link" href="<?= base_url('admin/settings'); ?>">Settings</a>
+                                <a class="nav-link" href="<?= base_url('admin/profile'); ?>">Profile</a>
                             </li>
-                        <?php endif; ?>
-                        <?php if (in_array($_SESSION['adminData']->user_type, $userAllowedTeachers)) : ?>
                             <li class="list-inline-item">
-                                <a class="nav-link" href="<?= base_url('admin/courses'); ?>">Courses</a>
+                                <a class="nav-link" href="<?= base_url('admin/dashboard/logOut'); ?>">Log Out</a>
                             </li>
-                        <?php endif; ?>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('admin/profile'); ?>">Profile</a>
-                        </li>
-                        <li class="list-inline-item">
-                            <a class="nav-link" href="<?= base_url('admin/dashboard/logOut'); ?>">Log Out</a>
-                        </li>
-                    </ul>
+                        </ul>
+                    </div>
                     <!-- Menu -->
                 </nav>
             </div>

@@ -1,16 +1,13 @@
 /* cabeçalho e menu */
-header.header {
+header.header-admin {
     background-color: #002447 ;
     position: relative;
 }
 
 span.logo-text {
     color: #feb249;
-
 }
 
-nav.nav-menu-admin {
-}
 a.nav-link {
     font-size: 16px;
 }
@@ -41,27 +38,19 @@ li.drop-menu:hover {
 }
 
 
-div.menu {
+div.menu-admin {
     position: absolute;
     right: 0;
     margin: auto;
     width: 70%;
-
 }
 
-main {
-    margin-bottom: 50px;
-    margin-top: 2%;
+div.box-dropdown-admin {
+    color: #002447;
+    font-size: 16px;
 }
 
-div .card-header {
-    font-size: 18px;
+a.line-dropdown-admin {
+    font-weight: bold;
 }
 
-section.secao {
-    margin: 30px auto;
-}
-
-._card {
-    margin: 10px auto;
-}

@@ -1,7 +1,7 @@
 <?php if (!defined('BASEPATH')) exit('No direct script access allowed');
 
 const USER_ALLOWED_ADMIN = [
-    // 'root',
+    'root',
     'admin',
     'teacher_admin'
 ];
