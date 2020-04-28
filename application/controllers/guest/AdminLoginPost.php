@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class AdminLoginPost extends CI_Controller
+require_once (APPPATH . 'controllers/Settings.php');
+
+class AdminLoginPost extends Settings
 {
     public function __construct()
     {
@@ -24,7 +26,7 @@ class AdminLoginPost extends CI_Controller
     {
         $data = [
             'nickname' => $this->input->post('nickname'),
-            'password' => $this->input->post('password')
+            'password' => md5($this->input->post('password'))
         ];
 
         $adminData = $this->admins->userLogin($data);
@@ -37,11 +39,5 @@ class AdminLoginPost extends CI_Controller
         redirect('/admin/dashboard');
 
         $this->flashMessageAndRedirect('danger', '<span><strong>' . $data['email'] . '</strong> is not valid!</span>', '/admin/login');
-    }
-
-    public function flashMessageAndRedirect(string $messageType, string $message, string $url)
-    {
-        $this->session->set_flashdata($messageType, $message);
-        redirect($url);
     }
 }

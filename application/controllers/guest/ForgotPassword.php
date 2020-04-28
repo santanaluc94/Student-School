@@ -1,7 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class ForgotPassword extends CI_Controller
+require_once (APPPATH . 'controllers/Settings.php');
+
+class ForgotPassword extends Settings
 {
 
     public function __construct()
@@ -55,7 +57,7 @@ class ForgotPassword extends CI_Controller
             return true;
         }
 
-        $this->flashMessageAndRedirectWithManyErrors('danger', $wrongValues, '/guest/register');
+        flashMessageAndRedirectWithManyErrors('danger', $wrongValues, '/guest/register');
     }
 
     private function validateCpf(string $cpf): bool
@@ -73,26 +75,5 @@ class ForgotPassword extends CI_Controller
         $formattedCpf = str_replace("-", "", $removingDots);
 
         return $formattedCpf;
-    }
-
-    public function flashMessageAndRedirectWithManyErrors(string $messageType, array $wrongValues, string $url)
-    {
-        $messages = [];
-
-        switch ($messageType) {
-            case 'danger':
-                foreach ($wrongValues as $field) {
-                    $messages[] = '<span><strong>' . ucfirst($field) . '</strong> is not valid!</span>';
-                }
-                break;
-            case 'warning':
-                foreach ($wrongValues as $field) {
-                    $messages[] = '<span><strong>' . ucfirst($field) . '</strong> is already been used by an user!</span>';
-                }
-                break;
-        }
-
-        $this->session->set_flashdata($messageType, $messages);
-        redirect($url);
     }
 }
