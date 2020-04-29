@@ -1,24 +1,23 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class DeletePost extends CI_Controller
+require_once APPPATH . 'controllers/user/UserSettings.php';
+
+class DeletePost extends UserSettings
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
-        $this->load->helper('session_helper');
-        $this->load->helper('user_data_helper');
         $this->load->model('users');
     }
 
     public function index(): void
     {
-        if (hasSession()) {
+        if ($this->hasSession()) {
             redirect('user/account/delete');
-        } else {
-            redirect('/guest/login');
         }
+
+        redirect('/guest/login');
     }
 
     public function delete(): void

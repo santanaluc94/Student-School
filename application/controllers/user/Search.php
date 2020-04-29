@@ -1,28 +1,25 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Search extends CI_Controller
+require_once APPPATH . 'controllers/user/UserSettings.php';
+
+class Search extends UserSettings
 {
     public function __construct()
     {
         parent::__construct();
         $this->load->model('courses');
-        $this->load->library('session');
-        $this->load->helper('session_helper');
     }
 
     public function index(): void
     {
-        if (hasSession()) {
-            $this->template->show('user/search/search');
+        if ($this->hasSession()) {
+            $data = get_object_vars($_SESSION['userData']);
+            $data = $this->formatUserData($data);
+
+            $this->template->show('user/search/search', $data);
         } else {
-            $data = [
-                'scripts' => [
-                    'util.js',
-                    'login.js'
-                ]
-            ];
-            $this->template->show("user/search/search.php", $data);
+            redirect('/guest/login');
         }
     }
 

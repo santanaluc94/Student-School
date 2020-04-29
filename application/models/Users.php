@@ -62,7 +62,6 @@ class Users extends CI_Model
     {
         parent::__construct();
         $this->load->database();
-        $this->load->helper('session_helper');
     }
 
     public function setId(int $id): self

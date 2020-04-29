@@ -1,9 +1,9 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-require_once (APPPATH . 'controllers/Settings.php');
+require_once APPPATH . 'controllers/admin/AdminSettings.php';
 
-class TeacherPost extends Settings
+class TeacherPost extends AdminSettings
 {
     /**
      * @var string
@@ -13,14 +13,12 @@ class TeacherPost extends Settings
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
         $this->load->model('admins');
-        $this->load->helper('admin_session_helper');
     }
 
     public function index(): void
     {
-        if (hasAdminSession()) {
+        if ($this->hasAdminSession()) {
             redirect('admin/teacher/grid');
         } else {
             redirect('/guest/adminLogin');
@@ -36,7 +34,7 @@ class TeacherPost extends Settings
             'cpf' => $this->input->post('cpf'),
             'password' => $this->input->post('password'),
             'cpassword' => $this->input->post('cpassword'),
-            'your_password' => $this->input->post('your_password'),
+            'your_password' => md5($this->input->post('your_password')),
             'user_type' => self::USER_TYPE,
             'id' => (int) $_SESSION['adminData']->id
         ];

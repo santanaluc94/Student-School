@@ -1,22 +1,19 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-require_once (APPPATH . 'controllers/Settings.php');
+require_once APPPATH . 'controllers/guest/GuestSettings.php';
 
-class RegisterPost extends Settings
+class RegisterPost extends GuestSettings
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
         $this->load->model('users');
-        $this->load->helper('session_helper');
-        $this->load->helper('user_data_helper');
     }
 
     public function index(): void
     {
-        if (hasSession()) {
+        if ($this->hasSession()) {
             redirect('user/account/dashboard');
         } else {
             redirect('/guest/login');

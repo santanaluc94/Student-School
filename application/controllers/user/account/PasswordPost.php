@@ -1,21 +1,19 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-require_once (APPPATH . 'controllers/Settings.php');
+require_once APPPATH . 'controllers/user/UserSettings.php';
 
-class PasswordPost extends Settings
+class PasswordPost extends UserSettings
 {
     public function __construct()
     {
         parent::__construct();
-        $this->load->library('session');
-        $this->load->helper('session_helper');
         $this->load->model('users');
     }
 
     public function index(): void
     {
-        if (hasSession()) {
+        if ($this->hasSession()) {
             redirect('user/account/delete');
         } else {
             redirect('/guest/login');
