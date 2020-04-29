@@ -8,6 +8,7 @@ class Grid extends AdminSettings
     public function __construct()
     {
         parent::__construct();
+        $this->load->model('admins');
     }
 
     public function index(): void
@@ -16,6 +17,8 @@ class Grid extends AdminSettings
             $data = get_object_vars($_SESSION['adminData']);
 
             if ($this->hasAdminPermissions($data['user_type'])) {
+                $data['teachers'] = $this->admins->getAllTeachers();
+
                 $this->template->show("admin/teacher/grid.php", $data);
             } else {
                 $this->flashMessageAndRedirect('danger', '<span>You do not have permissions to enter in this page!</span>', '/admin/dashboard');

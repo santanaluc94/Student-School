@@ -210,4 +210,13 @@ class Admins extends CI_Model
 
         return $fieldExist;
     }
+
+    public function getAllTeachers(): array
+    {
+        return $this->db->select('id, name, nickname, email, cpf')
+            ->from('admins')
+            ->where('user_type', 'teacher')
+            ->get()
+            ->result_array();
+    }
 }
