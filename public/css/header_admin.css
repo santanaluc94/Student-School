@@ -4,10 +4,6 @@ header.header-admin {
     position: relative;
 }
 
-span.logo-text {
-    color: #feb249;
-}
-
 a.nav-link {
     font-size: 16px;
 }
@@ -40,9 +36,17 @@ li.drop-menu:hover {
 
 div.menu-admin {
     position: absolute;
+    height: 100%;
     right: 0;
     margin: auto;
     width: 70%;
+    float: right;
+}
+
+ul.menu-admin {
+    position: absolute;
+    right: 0;
+    top: 25%;
 }
 
 div.box-dropdown-admin {
