@@ -1,0 +1,39 @@
+/* cabeçalho e menu */
+header.header-user {
+    background-color: #002447 ;
+    position: relative;
+}
+
+a.nav-link {
+    font-size: 16px;
+}
+
+a.nav-link:link {
+    color:#53D3D1;
+    transition: 0.5s ease-in;
+}
+
+a.nav-link:visited {
+    color:#53D3D1;
+    transition: 0.5s ease-in;
+}
+
+a.nav-link:hover {
+    color: #feb249;
+    transition: 0.5s ease-in;
+}
+
+div.menu-user {
+    position: absolute;
+    height: 100%;
+    right: 0;
+    margin: auto;
+    width: 70%;
+    float: right;
+}
+
+ul.menu-user {
+    position: absolute;
+    right: 0;
+    top: 25%;
+}
