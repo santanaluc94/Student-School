@@ -57,7 +57,7 @@ $userAllowedTeachers = [
                     </h1>
 
                     <div class="menu-admin">
-                        <ul class="social-list list-inline mb-0">
+                        <ul class="menu-admin social-list list-inline mb-0 ">
                             <li class="list-inline-item">
                                 <a class="nav-link" href="<?= base_url('admin/dashboard'); ?>">Dashboard</a>
                             </li>

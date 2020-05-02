@@ -24,11 +24,12 @@
     <!-- Theme CSS -->
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/theme.css'); ?>">
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/styles.css'); ?>">
+    <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/header_user.css'); ?>">
 
 </head>
 
 <body>
-    <header class="header">
+    <header class="header-user">
         <div class="branding">
             <div class="container">
                 <nav class="navbar navbar-expand-lg">
@@ -40,8 +41,8 @@
                         </a>
                     </h1>
 
-                    <div class="menu">
-                        <ul class="social-list list-inline mb-0">
+                    <div class="menu-user">
+                        <ul class="social-list list-inline mb-0 menu-user">
                             <li class="list-inline-item">
                                 <a class="nav-link" href="<?= base_url('user/dashboard'); ?>">Dashboard</a>
                             </li>
