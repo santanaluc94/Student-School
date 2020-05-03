@@ -9,8 +9,8 @@
                 <!-- Page Search -->
                 <div class="col-md-9">
                     <div class="text_search">
-                        <h3>Search for '<?= $search ?>' find <?= count($result) ?> results.</h3>
-                        <?php if (empty($result)) : ?>
+                        <h3>Search for '<?= $search ?>' find <?= $countAllResult ?> results.</h3>
+                        <?php if (empty($countAllResult)) : ?>
                             <h3>We could not find any course with the word '<?= $search ?>'</h3>
                         <?php else : ?>
                             <div class="card-deck">
@@ -31,6 +31,30 @@
                     </div>
                 </div>
             </div>
+
+            <!-- Pagination -->
+            <?php if ($countResult !== 1) : ?>
+                <nav aria-label="Page navigation">
+                    <ul class="pagination">
+                        <?php if ($previousPage > 0) : ?>
+                            <li class="page-item">
+                                <a class="page-link" href="<?= base_url('user/search/searchPost/?numberPage=') . $previousPage ?>">Previous</a>
+                            </li>
+                        <?php endif; ?>
+
+                        <?php for ($_i = 0; $_i < $countResult; $_i++) : ?>
+                            <?php $i = $_i + 1 ?>
+                            <li class="page-item"><a class="page-link" href="<?= base_url('user/search/searchPost/?numberPage=') . $i ?>"><?= $i ?></a></li>
+                        <?php endfor; ?>
+
+                        <?php if ($nextPage <= (int) $countResult) : ?>
+                            <li class="page-item">
+                                <a class="page-link" href="<?= base_url('user/search/searchPost/?numberPage=') . $nextPage ?>">Next</a>
+                            </li>
+                        <?php endif; ?>
+                    </ul>
+                </nav>
+            <?php endif; ?>
         </div>
     </div>
 </main>

@@ -9,6 +9,7 @@ class Search extends UserSettings
     {
         parent::__construct();
         $this->load->model('courses');
+        $this->load->library('session');
     }
 
     public function index(): void
@@ -25,11 +26,53 @@ class Search extends UserSettings
 
     public function searchPost(): void
     {
-        $search = $this->input->post('search');
+        if (isset($_GET['numberPage'])) {
+            $courses['page'] = (int) $_GET['numberPage'];
+            $courses['numberPage'] = (int) $_GET['numberPage'];
+        } else {
+            $courses['page'] = 1;
+            $courses['numberPage'] = 1;
+        }
 
-        $courses['result'] = $this->courses->getAllCoursesByName($search);
-        $courses['search'] = $search;
+        // Search text
+        $courses['search'] = "";
 
-        $this->template->show("user/search/search.php", $courses);
+        if ($this->input->post('search') !== null) {
+            $courses['search'] = $this->input->post('search');
+            $this->session->set_userdata(array("search" => $courses['search']));
+        } else {
+            if ($this->session->userData('search') !== null) {
+                $courses['search'] = $this->session->userdata('search');
+            }
+        }
+
+        // Show how many cards will be displayed per page
+        $courses['pageQty'] = 9;
+
+        // Row position
+        if ($courses['numberPage'] !== 1) {
+            $courses['numberPage'] = ($courses['numberPage'] - 1) * $courses['pageQty'];
+        }
+
+        // Get page courses
+        $courses['result'] = $this->courses->getAllCoursesByName($courses['search']);
+
+        // Count total results
+        $courses['countAllResult'] = count($courses['result']);
+
+        // Count current page result
+        $courses['countResult'] = (int) ceil($courses['countAllResult'] / $courses['pageQty']);
+
+        // Courses in current pages
+        if ($courses['countResult'] > 1) {
+            $courses['result'] = array_slice($courses['result'], $courses['numberPage'], $courses['pageQty']);
+        }
+
+        // Setitng previous and next page buttons
+        $courses['previousPage'] = $courses['page'] - 1;
+        $courses['nextPage'] = $courses['page'] + 1;
+
+        // Load view
+        $this->template->show("user/search/search", $courses);
     }
 }
