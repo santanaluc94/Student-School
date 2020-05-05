@@ -219,4 +219,50 @@ class Admins extends CI_Model
             ->get()
             ->result_array();
     }
+
+    public function getTeacherData(int $id): array
+    {
+        return $this->db->select('id, name, nickname, email, cpf, user_type')
+            ->from('admins')
+            ->where('id', $id)
+            ->get()
+            ->row_array();
+    }
+
+    public function isDataUsedLessInId(string $field, string $column, int $id): bool
+    {
+        $value = $this->db->select($column)
+            ->from('admins')
+            ->where('id !=', $id)
+            ->where($column, $field)
+            ->get()
+            ->result_array();
+
+        if (!empty($value)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function canUpdateUser($data): bool
+    {
+        $usersExist = $this->db->from('admins')
+            ->where('id !=', $data['id'])
+            ->where('nickname', $data['nickname'])
+            ->where('email', $data['email'])
+            ->where('cpf', $data['cpf'])
+            ->get()->result_array();
+
+        if (empty($usersExist)) {
+            return true;
+        }
+
+        return false;
+    }
+
+    public function updateUser($data): void
+    {
+        $this->db->where('id', $data['id'])->update('admins', $data);
+    }
 }

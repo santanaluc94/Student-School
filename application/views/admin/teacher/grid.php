@@ -25,7 +25,7 @@
                                 <td scope="row"><?= $teacher['name'] ?></td>
                                 <td scope="row"><?= $teacher['nickname'] ?></td>
                                 <td scope="row"><?= $teacher['email'] ?></td>
-                                <td scope="row"><?= $teacher['cpf'] ?></td>
+                                <td scope="row" class="cpf"><?= $teacher['cpf'] ?></td>
                                 <td scope="row">
                                     <a class="btn btn-primary text-white" href="<?= base_url('admin/teacher/edit/?id=') . $teacher['id']; ?>">
                                         Edit
@@ -41,6 +41,21 @@
                     </tbody>
                 </table>
 
+                <?php if ($this->session->flashdata('danger')) : ?>
+                    <div class="alert alert-danger" style="margin-top: 15px;">
+                        <?= $this->session->flashdata('danger') ?>
+                    </div>
+                <?php elseif ($this->session->flashdata('success')) : ?>
+                    <div class="alert alert-success" style="margin-top: 15px;">
+                        <?= $this->session->flashdata('success') ?>
+                    </div>
+                <?php endif ?>
+
             </div>
         </div>
 </main>
+<script type="text/javascript">
+    window.onload = function() {
+        $('.cpf').mask('000.000.000-00');
+    };
+</script>
