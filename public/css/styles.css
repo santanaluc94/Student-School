@@ -65,3 +65,43 @@ section.secao {
 ._card {
     margin: 10px auto;
 }
+
+
+/* style footer */
+
+footer.footer{
+    background-color: #002447;
+}
+
+h4.foot-title {
+    color: #53D3D1;
+}
+
+p.foot-text, div.foot-text {
+    color: #FBF8EF;
+}
+
+p.copyright, a.copyright {
+    color: #FBF8EF;
+}
+
+a.foot-item:link, a.foot-item:visited {
+    color: #FBF8EF;
+}
+
+a.foot-item:hover{
+    font-size: 25px;
+    transition: 0.5s ease-in;
+}
+
+ul.foot-item {
+    /* height: 50px; */
+
+}
+
+li.foot-item {
+    position: relative;
+    margin: 0 20px 0 20px;
+    top: 25%;
+}
+
