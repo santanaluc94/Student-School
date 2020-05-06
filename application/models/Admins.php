@@ -265,4 +265,9 @@ class Admins extends CI_Model
     {
         $this->db->where('id', $data['id'])->update('admins', $data);
     }
+
+    public function deleteUser(int $id): void
+    {
+        $this->db->delete('admins', ['id' => $id]);
+    }
 }

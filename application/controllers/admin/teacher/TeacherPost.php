@@ -196,6 +196,20 @@ class TeacherPost extends AdminSettings
         return $data;
     }
 
+    public function delete(): void
+    {
+        $id = (int) $this->input->post('id');
+
+        $userType = $this->admins->getDataById($id, 'user_type');
+
+        if ($userType !== self::USER_TYPE) {
+            $this->flashMessageAndRedirect('danger', '<span>This user is not a teacher!</span>', '/admin/teacher/grid');
+        }
+
+        $this->admins->deleteUser($id);
+        $this->flashMessageAndRedirect('warning', '<span>Teacher was deleted!</span>', '/admin/teacher/grid');
+    }
+
     private function validateCpf(string $cpf): bool
     {
         if (strlen($cpf) === 14) {

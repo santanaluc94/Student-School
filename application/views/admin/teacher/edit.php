@@ -11,7 +11,7 @@
                     <div class="card-body">
                         <form action="<?= base_url('admin/teacher/teacherPost/update') ?>" method="post">
                             <div class="form-group row">
-                                <input name="teacher_id" value="<?= $teacher['id'] ?>" required />
+                                <input name="teacher_id" value="<?= $teacher['id'] ?>" hidden required />
                             </div>
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
