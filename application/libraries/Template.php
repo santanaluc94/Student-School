@@ -13,28 +13,25 @@ class Template
                     $CI = &get_instance();
                     $CI->load->view('user/header', $data);
                     $CI->load->view($view, $data);
-                    $CI->load->view('user/footer', $data);
                     break;
                 case 'admin':
                     $CI = &get_instance();
                     $CI->load->view('admin/header', $data);
                     $CI->load->view($view, $data);
-                    $CI->load->view('admin/footer', $data);
                     break;
                 case 'guest':
                     $CI = &get_instance();
                     $CI->load->view('guest/header', $data);
                     $CI->load->view($view, $data);
-                    $CI->load->view('guest/footer', $data);
                     break;
             }
         } else {
             $CI = &get_instance();
             $CI->load->view('guest/header', $data);
             $CI->load->view($view, $data);
-            $CI->load->view('guest/footer', $data);
         }
 
+        $CI->load->view('footer', $data);
         $CI->load->view('scripts', $data);
     }
 }

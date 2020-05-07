@@ -1,107 +1,113 @@
 /* cabeçalho e menu */
 header.header {
-    background-color: #002447 ;
-    position: relative;
+	background-color: #002447;
+	position: relative;
 }
 
 span.logo-text {
-    color: #feb249;
-
+	color:;
 }
 
-nav.nav-menu-admin {
-}
 a.nav-link {
-    font-size: 16px;
+	font-size: 16px;
 }
 
 a.nav-link:link {
-    color:#53D3D1;
-    transition: 0.5s ease-in;
+	color: #53D3D1;
+	transition: 0.5s ease-in;
 }
 
 a.nav-link:visited {
-    color:#53D3D1;
-    transition: 0.5s ease-in;
+	color: #53D3D1;
+	transition: 0.5s ease-in;
 }
 
 a.nav-link:hover {
-    color: #feb249;
-    transition: 0.5s ease-in;
+	color: #FC6B05 ;
+	transition: 0.5s ease-in;
 }
 
 li.drop-menu {
-    color:#53D3D1;
-    transition: 0.5s ease-in;
+	color: #53D3D1;
+	transition: 0.5s ease-in;
 }
 
 li.drop-menu:hover {
-    color: #feb249;
-    transition: 0.5s ease-in;
+	color: #FC6B05;
+	transition: 0.5s ease-in;
 }
 
-
 div.menu {
-    position: absolute;
-    right: 0;
-    margin: auto;
-    width: 70%;
+	position: absolute;
+	right: 0;
+	margin: auto;
+	width: 70%;
 
 }
 
 main {
-    margin-bottom: 50px;
-    margin-top: 2%;
+	margin-bottom: 50px;
+	margin-top: 2%;
 }
 
 div .card-header {
-    font-size: 18px;
+	font-size: 18px;
 }
 
 section.secao {
-    margin: 30px auto;
+	margin: 30px auto;
 }
 
 ._card {
-    margin: 10px auto;
+	margin: 10px auto;
 }
 
-
 /* style footer */
-
-footer.footer{
+footer.footer {
     background-color: #002447;
+    padding: 20px 20px 20px;
 }
 
 h4.foot-title {
-    color: #53D3D1;
+	color: #53D3D1;
 }
 
-p.foot-text, div.foot-text {
+p.foot-text,
+div.foot-text {
+	color: #FBF8EF;
+}
+
+hr.line {
+    background-color: #53D3D1;
+    /* background: linear-gradient(45deg, red, #53D3D1); */
+}
+
+button.foot-button {
+    background-color: #53D3D1;
+}
+
+button.foot-button:hover {
+    background-color: #FC6B05;
     color: #FBF8EF;
-}
-
-p.copyright, a.copyright {
-    color: #FBF8EF;
-}
-
-a.foot-item:link, a.foot-item:visited {
-    color: #FBF8EF;
-}
-
-a.foot-item:hover{
-    font-size: 25px;
     transition: 0.5s ease-in;
 }
+p.copyright,
+a.copyright {
+	color: #FBF8EF;
+}
 
-ul.foot-item {
-    /* height: 50px; */
+a.foot-item:link,
+a.foot-item:visited {
+	color: #FBF8EF;
+}
 
+a.foot-item:hover {
+	color: #53D3D1;
+	transition: 0.5s ease-in;
 }
 
 li.foot-item {
-    position: relative;
-    margin: 0 20px 0 20px;
-    top: 25%;
+	position: relative;
+	margin: 0 20px 0 20px;
+	top: 25%;
 }
-
