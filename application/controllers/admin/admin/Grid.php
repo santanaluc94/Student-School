@@ -3,16 +3,8 @@ defined('BASEPATH') or exit('No direct script access allowed');
 
 require_once APPPATH . 'controllers/admin/AdminSettings.php';
 
-class Edit extends AdminSettings
+class Grid extends AdminSettings
 {
-    /**
-     * @var string
-     */
-    const USER_TYPE = [
-        'admin',
-        'teacher_admin'
-    ];
-
     public function __construct()
     {
         parent::__construct();
@@ -25,14 +17,9 @@ class Edit extends AdminSettings
             $data = get_object_vars($_SESSION['adminData']);
 
             if ($this->hasAdminPermissions($data['user_type'])) {
-                $data['userAdmin']['id'] = $_GET['id'];
-                $data['userAdmin'] = $this->admins->getAdminUserData($data['userAdmin']['id']);
+                $data['admins'] = $this->admins->getAllAdmins();
 
-                if (!in_array($data['userAdmin']['user_type'], self::USER_TYPE)) {
-                    $this->flashMessageAndRedirect('danger', '<span>This user is not a admin!</span>', '/admin/admin/grid');
-                }
-
-                $this->template->show("admin/admin/edit.php", $data);
+                $this->template->show("admin/admin/grid.php", $data);
             } else {
                 $this->flashMessageAndRedirect('danger', '<span>You do not have permissions to enter in this page!</span>', '/admin/dashboard');
             }

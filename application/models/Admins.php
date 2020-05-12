@@ -270,4 +270,14 @@ class Admins extends CI_Model
     {
         $this->db->delete('admins', ['id' => $id]);
     }
+
+    public function getAllAdmins(): array
+    {
+        return $this->db->select('id, name, nickname, email, cpf')
+            ->from('admins')
+            ->where('user_type', 'teacher_admin')
+            ->or_where('user_type', 'admin')
+            ->get()
+            ->result_array();
+    }
 }

@@ -6,7 +6,7 @@
             <div class="col-md-8">
                 <h1>Edit Admin <?= $userAdmin['name'] ?></h1>
                 <div class="card">
-                    <div class="card-header bg-dark text-white">Edit Admin</div>
+                    <div class="card-header bg-danger text-white">Edit Admin</div>
                     <div class="card-body">
                         <form action="<?= base_url('admin/admin/adminPost/update') ?>" method="post">
                             <div class="form-group row">
