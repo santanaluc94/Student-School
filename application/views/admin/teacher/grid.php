@@ -5,7 +5,7 @@
             <!-- Page -->
             <div class="col-md-12">
                 <h1>All Teachers</h1>
-
+                <a class="btn btn-success text-white" href="<?= base_url('admin/teacher/add') ?>">New Teacher</a>
                 <table class="table table-hover table-sm">
                     <thead class="thead-dark">
                         <tr>
