@@ -8,7 +8,7 @@ class Edit extends AdminSettings
     /**
      * @var string
      */
-    const USER_TYPE = 'teacher';
+    const USER_TYPE = 'admin';
 
     public function __construct()
     {
@@ -26,10 +26,10 @@ class Edit extends AdminSettings
                 $data['userAdmin'] = $this->admins->getAdminUserData($data['userAdmin']['id']);
 
                 if ($data['userAdmin']['user_type'] != self::USER_TYPE) {
-                    $this->flashMessageAndRedirect('danger', '<span>This user is not a teacher!</span>', '/admin/teacher/grid');
+                    $this->flashMessageAndRedirect('danger', '<span>This user is not a admin!</span>', '/admin/admin/grid');
                 }
 
-                $this->template->show("admin/teacher/edit.php", $data);
+                $this->template->show("admin/admin/edit.php", $data);
             } else {
                 $this->flashMessageAndRedirect('danger', '<span>You do not have permissions to enter in this page!</span>', '/admin/dashboard');
             }

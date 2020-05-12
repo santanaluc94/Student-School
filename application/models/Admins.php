@@ -220,7 +220,7 @@ class Admins extends CI_Model
             ->result_array();
     }
 
-    public function getTeacherData(int $id): array
+    public function getAdminUserData(int $id): array
     {
         return $this->db->select('id, name, nickname, email, cpf, user_type')
             ->from('admins')

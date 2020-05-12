@@ -4,13 +4,13 @@
 
             <!-- Page -->
             <div class="col-md-8">
-                <h1>Edit Teacher <?= $userAdmin['name'] ?></h1>
+                <h1>Edit Admin <?= $userAdmin['name'] ?></h1>
                 <div class="card">
-                    <div class="card-header bg-dark text-white">Edit Teacher</div>
+                    <div class="card-header bg-dark text-white">Edit Admin</div>
                     <div class="card-body">
-                        <form action="<?= base_url('admin/teacher/teacherPost/update') ?>" method="post">
+                        <form action="<?= base_url('admin/admin/adminPost/update') ?>" method="post">
                             <div class="form-group row">
-                                <input name="teacher_id" value="<?= $userAdmin['id'] ?>" hidden required />
+                                <input name="admin_id" value="<?= $userAdmin['id'] ?>" hidden required />
                             </div>
                             <div class="form-group row">
                                 <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
@@ -40,7 +40,7 @@
                                 <div class="col-md-1"></div>
                                 <div>
                                     <input type="checkbox" class="form-check-input" name="reset_password">
-                                    <label class="col-form-label">Yes, I want to reset the teacher password to default (123456);</label>
+                                    <label class="col-form-label">Yes, I want to reset the admin password to default (123456);</label>
                                 </div>
                             </div>
                             <hr />
@@ -54,7 +54,7 @@
                                 <button type="submit" class="btn btn-primary" href='?page=submit'>
                                     Update
                                 </button>
-                                <a class="btn btn-secondary text-white" href="<?= base_url('admin/teacher/grid') ?>">Back</a>
+                                <a class="btn btn-secondary text-white" href="<?= base_url('admin/admin/grid') ?>">Back</a>
                             </div>
                             <?php if ($this->session->flashdata('danger')) : ?>
                                 <?php foreach ($this->session->flashdata('danger') as $number) : ?>
