@@ -6,6 +6,7 @@
             <div class="col-md-8">
                 <div class="card">
                     <div class="card-header bg-dark text-white">Add New Teacher</div>
+
                     <div class="card-body">
                         <form action="<?= base_url('admin/teacher/teacherPost/execute') ?>" method="post">
                             <div class="form-group row">
@@ -55,6 +56,7 @@
                                 <button type="submit" class="btn btn-primary" href='?page=submit'>
                                     Register
                                 </button>
+                                <a class="btn btn-secondary text-white" href="<?= base_url('admin/teacher/grid') ?>">Back</a>
                             </div>
                             <?php if ($this->session->flashdata('danger')) : ?>
                                 <?php foreach ($this->session->flashdata('danger') as $number) : ?>
