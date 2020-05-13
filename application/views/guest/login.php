@@ -22,14 +22,14 @@
                                 <div class="col-md-6 offset-md-4">
                                     <div class="checkbox">
                                         <label class="text-login">
-                                            <input type="checkbox" name="remember"> Remember Me
+                                            <input class="text-login" type="checkbox" name="remember"> Remember Me
                                         </label>
                                     </div>
                                 </div>
                             </div>
                             <div class="col-md-6 offset-md-4">
                                 <div>
-                                    <button type="submit" class="btn btn" style="background-color: #FC6B05;" id="btn_login">
+                                    <button type="submit" class="btn btn button-login" id="btn_login">
                                         Login
                                     </button>
                                 </div>
