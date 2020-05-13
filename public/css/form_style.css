@@ -10,12 +10,14 @@ div.head-card {
 	text-align: center;
 }
 
-label.text-login,a.text-login {
+label.text-login,a.text-login,span.text-login {
 	color:#002447;
 }
+
 a.text-login:link {
 	text-decoration: none;
 }
+
 a.text-login:hover {
 	color: #53D3D1;
 	transition: 0.5s ease-in;
@@ -23,5 +25,17 @@ a.text-login:hover {
 
 input.box-field:focus {
 	box-shadow: 0 0 0.3em #53D3D1;
+}
 
+button.button-login {
+	background-color: #FC6B05;
+}
+
+/* card admin logim */
+
+div.head-card-admin {
+	color: #FBF8EF;
+	background-color: #002447;
+	text-align: center;
+	font-weight: bold;
 }
