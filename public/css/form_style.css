@@ -1,0 +1,27 @@
+/* card login */
+
+div.box-card {
+	box-shadow: 0 0 0.5em #002447;
+}
+
+div.head-card {
+	color:#002447;
+	font-weight: bolder;
+	text-align: center;
+}
+
+label.text-login,a.text-login {
+	color:#002447;
+}
+a.text-login:link {
+	text-decoration: none;
+}
+a.text-login:hover {
+	color: #53D3D1;
+	transition: 0.5s ease-in;
+}
+
+input.box-field:focus {
+	box-shadow: 0 0 0.3em #53D3D1;
+
+}
