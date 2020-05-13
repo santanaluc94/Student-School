@@ -10,15 +10,15 @@ div.head-card {
 	text-align: center;
 }
 
-label.text-login,a.text-login,span.text-login {
+label.text-form,a.text-form,span.text-form {
 	color:#002447;
 }
 
-a.text-login:link {
+a.text-form:link {
 	text-decoration: none;
 }
 
-a.text-login:hover {
+a.text-form:hover {
 	color: #53D3D1;
 	transition: 0.5s ease-in;
 }
@@ -27,7 +27,7 @@ input.box-field:focus {
 	box-shadow: 0 0 0.3em #53D3D1;
 }
 
-button.button-login {
+button.button-login, button.button-register {
 	background-color: #FC6B05;
 }
 
