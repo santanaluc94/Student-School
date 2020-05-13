@@ -7,13 +7,13 @@
                     <div class="card-body">
                         <form action="<?= base_url('guest/adminLoginPost/execute') ?>" method="post" id="admin_login_form">
                             <div class="form-group row">
-                                <label for="nickname" class="col-md-4 col-form-label text-md-right text-login">Nickname</label>
+                                <label for="nickname" class="col-md-4 col-form-label text-md-right text-form">Nickname</label>
                                 <div class="col-md-6">
                                     <input type="text" id="nickname" class="box-field form-control" name="nickname" placeholder="Nickname" required autofocus>
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="password" class="col-md-4 col-form-label text-md-right text-login">Password</label>
+                                <label for="password" class="col-md-4 col-form-label text-md-right text-form">Password</label>
                                 <div class="col-md-6">
                                     <input type="password" id="password" class="box-field form-control" name="password" required>
                                 </div>
@@ -22,7 +22,7 @@
                                 <div class="col-md-6 offset-md-4">
                                     <div class="checkbox">
                                         <label>
-                                            <input type="checkbox" name="remember"><span class="text-login">Remember me</span>
+                                            <input type="checkbox" name="remember"><span class="text-form">Remember me</span>
                                         </label>
                                     </div>
                                 </div>
