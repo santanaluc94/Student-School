@@ -25,7 +25,7 @@
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/theme.css'); ?>">
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/styles.css'); ?>">
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/header_guest.css'); ?>">
-    <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/card_style.css'); ?>">
+    <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/form_style.css'); ?>">
 
 </head>
 
