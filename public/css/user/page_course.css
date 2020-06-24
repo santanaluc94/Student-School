@@ -1,0 +1,36 @@
+/* Page course */
+h1.title-course {
+	font-weight:bolder;
+	color: #002447;
+}
+
+img.img-course {
+	height: 300px;
+	width: 45 0px;
+	border: blue solid 1px;
+}
+
+div.photo-course {
+	border: red solid 1px;
+}
+
+div.buy-course {
+	border: purple solid 1px;
+}
+
+button.buy-button {
+	background-color: #53D3D1;
+	color: #002447;
+}
+
+button.buy-button:hover {
+	background-color: #FC6B05;
+    color: #FBF8EF;
+    transition: 0.5s ease-in;
+}
+
+div.courseinfo {
+	border: 1px solid red;
+	/* margin: 20px 20px 20px 20px; */
+    margin-top: 20px;
+}

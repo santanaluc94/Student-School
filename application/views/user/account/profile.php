@@ -1,6 +1,8 @@
 <main class="content">
     <div class="container">
-        <h1>Profile Page</h1>
+        <div class="box-title-page">
+            <h1 class="title-page">Profile Page</h1>
+        </div>
 
         <div class="row justify-content-center">
             <div class="col-md-3">
@@ -13,48 +15,48 @@
 
             <!-- Page Profile -->
             <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">Personal Information</div>
+                <div class="card box-card">
+                    <div class="card-header head-card">Personal Information</div>
                     <div class="card-body">
                         <form action="<?= base_url('user/account/profilePost/execute') ?>" method="post">
                             <div class="form-group row" style="display: none">
-                                <label for="id" class="col-md-4 col-form-label text-md-right">User Id</label>
+                                <label for="id" class="col-md-4 col-form-label text-md-right text-form">User Id</label>
                                 <div class="col-md-6">
-                                    <input value="<?= $id ?>" type="number" id="id" class="form-control" name="id" required />
+                                    <input value="<?= $id ?>" type="number" id="id" class="form-control box-field" name="id" required />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="name" class="col-md-4 col-form-label text-md-right">Full Name</label>
+                                <label for="name" class="col-md-4 col-form-label text-md-right text-form">Full Name</label>
                                 <div class="col-md-6">
-                                    <input value="<?= $name ?>" type="text" id="name" class="form-control" name="name" required />
+                                    <input value="<?= $name ?>" type="text" id="name" class="form-control box-field" name="name" required />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                                <label for="email" class="col-md-4 col-form-label text-md-right text-form">E-Mail Address</label>
                                 <div class="col-md-6">
-                                    <input value="<?= $email ?>" type="email" id="email" class="form-control" name="email" placeholder="example@email.com" required />
+                                    <input value="<?= $email ?>" type="email" id="email" class="form-control box-field" name="email" placeholder="example@email.com" required />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="cpf" class="col-md-4 col-form-label text-md-right">C.P.F.</label>
+                                <label for="cpf" class="col-md-4 col-form-label text-md-right text-form">C.P.F.</label>
                                 <div class="col-md-6">
-                                    <input value="<?= $cpf ?>" type="text" id="cpf" class="form-control" name="cpf" placeholder="000.000.000-00" required />
+                                    <input value="<?= $cpf ?>" type="text" id="cpf" class="form-control box-field" name="cpf" placeholder="000.000.000-00" required />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="phone" class="col-md-4 col-form-label text-md-right">Phone Number</label>
+                                <label for="phone" class="col-md-4 col-form-label text-md-right text-form">Phone Number</label>
                                 <div class="col-md-6">
-                                    <input value="<?= $phone ?>" type="text" id="phone" class="form-control" name="phone" placeholder="(00) 0000-0000" required />
+                                    <input value="<?= $phone ?>" type="text" id="phone" class="form-control box-field" name="phone" placeholder="(00) 0000-0000" required />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="birthday" class="col-md-4 col-form-label text-md-right">Birthday</label>
+                                <label for="birthday" class="col-md-4 col-form-label text-md-right text-form">Birthday</label>
                                 <div class="col-md-6">
-                                    <input type="text" value="<?= $birthday ?>" id="birthday" class="form-control" name="birthday" placeholder="00/00/0000" required />
+                                    <input type="text" value="<?= $birthday ?>" id="birthday" class="form-control box-field" name="birthday" placeholder="00/00/0000" required />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="gender" class="col-md-4 col-form-label text-md-right">Gender</label>
+                                <label for="gender" class="col-md-4 col-form-label text-md-right text-form">Gender</label>
                                 <div class="col-md-6">
                                     <select value="<?= $gender ?>" type="custom-select" id="gender" class="form-control" name="gender" required style="padding-top: 0; padding-bottom:0">
                                         <option value="0"></option>
@@ -65,7 +67,7 @@
                                 </div>
                             </div>
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn button-profile">
                                     Save
                                 </button>
                             </div>
