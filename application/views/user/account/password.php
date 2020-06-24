@@ -1,6 +1,8 @@
 <main class="content">
     <div class="container">
-        <h1>Profile Page</h1>
+        <div class="box-title-page">
+            <h1 class="title-page">Profile Page</h1>
+        </div>
 
         <div class="row justify-content-center">
             <div class="col-md-3">
@@ -13,38 +15,38 @@
 
             <!-- Page Change Password -->
             <div class="col-md-9">
-                <div class="card">
-                    <div class="card-header">Change Password</div>
+                <div class="card box-card">
+                    <div class="card-header head-card">Change Password</div>
                     <div class="card-body">
                         <form action="<?= base_url('user/account/passwordPost/execute') ?>" method="post">
                             <div class="form-group row" style="display: none">
                                 <label for="id" class="col-md-4 col-form-label text-md-right">User Id</label>
                                 <div class="col-md-6">
-                                    <input value="<?= $id ?>" type="number" id="id" class="form-control" name="id" required />
+                                    <input value="<?= $id ?>" type="number" id="id" class="form-control box-field" name="id" required />
                                 </div>
                             </div>
-                            <p>To change your password, just fill the following fields</p>
+                            <p class="text-form">To change your password, just fill the following fields</p>
                             <div class="form-group row">
-                                <label for="currentPassword" class="col-md-4 col-form-label text-md-right">Current Password</label>
+                                <label for="currentPassword" class="col-md-4 col-form-label text-md-right text-form">Current Password</label>
                                 <div class="col-md-6">
-                                    <input type="password" id="currentPassword" class="form-control" name="currentPassword" required />
+                                    <input type="password" id="currentPassword" class="form-control box-field" name="currentPassword" required />
                                 </div>
                             </div>
                             <hr />
                             <div class="form-group row">
-                                <label for="newPassword" class="col-md-4 col-form-label text-md-right">New Password</label>
+                                <label for="newPassword" class="col-md-4 col-form-label text-md-right text-form">New Password</label>
                                 <div class="col-md-6">
-                                    <input type="password" id="name" class="form-control" name="newPassword" required />
+                                    <input type="password" id="name" class="form-control box-field" name="newPassword" required />
                                 </div>
                             </div>
                             <div class="form-group row">
-                                <label for="confirmNewPassword" class="col-md-4 col-form-label text-md-right">Confirm New Password</label>
+                                <label for="confirmNewPassword" class="col-md-4 col-form-label text-md-right text-form">Confirm New Password</label>
                                 <div class="col-md-6">
-                                    <input type="password" id="confirmNewPassword" class="form-control" name="confirmNewPassword" required />
+                                    <input type="password" id="confirmNewPassword" class="form-control box-field" name="confirmNewPassword" required />
                                 </div>
                             </div>
                             <div class="col-md-6 offset-md-4">
-                                <button type="submit" class="btn btn-primary">
+                                <button type="submit" class="btn btn button-change-password">
                                     Save
                                 </button>
                             </div>

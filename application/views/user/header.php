@@ -27,6 +27,7 @@
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/header_user.css'); ?>">
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/user/page_course.css'); ?>">
     <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/user/profile_page.css'); ?>">
+    <link id="theme-style" rel="stylesheet" href="<?= base_url('public/css/user/page_change_password.css'); ?>">
 </head>
 
 <body>
