@@ -44,7 +44,3 @@ label.text-form {
 input.box-field:focus {
     box-shadow: 0 0 0.3em #53D3D1;
 }
-
-button.button-profile {
-    background-color: #FC6B05;
-}
