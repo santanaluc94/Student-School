@@ -1,0 +1,52 @@
+/* card login */
+
+/* page profile */
+div.box-title-page {
+    margin-bottom: 20px;
+}
+
+h1.title-page {
+    font-weight: bolder;
+    color: #002447;
+    font-size: 30px;
+}
+
+/* card my account */
+div.box-my-account {
+    box-shadow: 0 0 0.5em #002447;
+}
+
+a.text-account {
+    color: #002447;
+}
+
+a.text-account:link {
+    text-decoration: none;
+}
+
+a.text-account:hover {
+    color: #FC6B05;
+}
+
+/* form profile page */
+div.box-card {
+    box-shadow: 0 0 0.5em #002447;
+}
+
+div.head-card {
+    color: #002447;
+    font-weight: bolder;
+    text-align: center;
+}
+
+label.text-form {
+    color: #002447;
+}
+
+input.box-field:focus {
+    box-shadow: 0 0 0.3em #53D3D1;
+}
+
+button.button-profile {
+    background-color: #FC6B05;
+}
